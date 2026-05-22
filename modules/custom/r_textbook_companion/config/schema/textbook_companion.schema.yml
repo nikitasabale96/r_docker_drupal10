@@ -1,0 +1,22 @@
+textbook_companion.settings:
+  type: mapping
+  label: Settings
+  mapping:
+    textbook_companion_from_email:
+      type: string
+    textbook_companion_emails:
+      type: string
+    textbook_companion_cc_emails:
+      type: string
+    textbook_companion_source_extensions:
+      type: string
+    textbook_companion_dataset_extensions:
+      type: string
+    textbook_companion_codable_examples_extensions:
+      type: string
+    textbook_companion_sample_source_extensions:
+      type: string
+    textbook_companion_dependency_extensions:
+      type: string
+    textbook_companion_book_preferences:
+      type: string

@@ -1,0 +1,7 @@
+name = Textbook Companion
+description = IIT Bombay Textbook Companion project
+package = IITB
+version = "8.x"
+core = "8.x"
+type = "module"
+project = "textbook_companion"

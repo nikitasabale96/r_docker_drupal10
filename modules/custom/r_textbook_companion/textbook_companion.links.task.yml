@@ -1,0 +1,47 @@
+textbook_companion._proposal_pending_tab:
+  route_name: textbook_companion._proposal_pending
+  title: 'Pending Proposals'
+  base_route: textbook_companion._proposal_pending
+  weight: 1
+
+textbook_companion._proposal_all_tab:
+  route_name: textbook_companion._proposal_all
+  title: 'All Proposals'
+  base_route: textbook_companion._proposal_pending
+  weight: 2
+
+textbook_companion._failed_all_tab:
+  route_name: textbook_companion._failed_all
+  title: 'Failed Proposals'
+  base_route: textbook_companion._proposal_pending
+  weight: 3
+
+textbook_companion.codable_example_approval_tab:
+  route_name: textbook_companion.codable_example_approval
+  title: 'Manage Codable Examples'
+  base_route: textbook_companion.code_approval
+  weight: 1
+
+textbook_companion.code_approval_tab:
+  route_name: textbook_companion.code_approval
+  title: 'Code Approval'
+  base_route: textbook_companion.code_approval
+  weight: 2
+
+textbook_companion.bulk_approval_tab:
+  route_name: textbook_companion.bulk_approval_form
+  title: 'Bulk Manage'
+  base_route: textbook_companion.code_approval
+  weight: 3
+
+textbook_companion.list_chapters_tab:
+  route_name: textbook_companion.list_chapters
+  title: 'List Chapters'
+  base_route: textbook_companion.list_chapters
+  weight: 1
+
+textbook_companion.upload_examples_tab:
+  route_name: textbook_companion.upload_examples
+  title: 'Code Submission'
+  base_route: textbook_companion.list_chapters
+  weight: 2

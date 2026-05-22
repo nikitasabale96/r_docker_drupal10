@@ -1,0 +1,2101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Drupal Module Upgrader analysis report</title>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:600italic,400,700,600' rel='stylesheet' type='text/css' />
+    <style type="text/css">
+    <!--
+
+body {
+  width: 80%;
+  color: #343434;
+  margin: 1em auto;
+  font-family: 'Open Sans', Verdana, sans-serif;
+}
+
+details {
+  font-size: 18px;
+  line-height: 25px;
+  margin-bottom: 2em;
+  display: list-item;
+  list-style: none;
+}
+
+details summary {
+  padding: 1em;
+  margin-bottom: 1em;
+  display: list-item;
+  cursor: pointer;
+}
+
+details.error summary {
+  background-color: #ffd5d5;
+}
+
+details.warning summary {
+  background-color: #fff3bb;
+}
+
+a {
+  color: #095cb1;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+h5 {
+  font-size: 1em;
+}
+
+aside {
+  font-style: italic;
+  line-height: 20px;
+  font-size: 15px;
+}
+
+.group {
+  border: 1px solid #ececec;
+  padding: 1em;
+  display: block;
+}
+
+.group > summary {
+  padding: 0;
+  color: #c8c8c8;
+  margin-bottom: 0;;
+  font-weight: bold;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  display: list-item;
+}
+
+.group[open] > summary {
+  margin-bottom: 1em;
+}
+
+.group > details:last-child {
+  margin-bottom: 0;
+}
+
+    -->
+    </style>
+  </head>
+  <body>
+    <h1>Drupal Module Upgrader analysis report</h1>
+      <details open="true" class="group">
+      <summary></summary>
+          <details class="warning">
+      <summary>Static permissions are now defined in <code>MODULE.permissions.yml</code>.</summary>
+
+      
+            <h5>Documentation</h5>
+      <ul>
+                <li><a target="_blank" href="https://www.drupal.org/node/2311427">Defining permissions in <code>MODULE.permissions.yml</code></a></li>
+              </ul>
+      
+            <h5>Files Affected</h5>
+      <ul>
+              <li>modules/custom/r_textbook_companion/textbook_companion.module, line 804</li>
+            </ul>
+            <p class="fixable">This issue can be fixed automatically.</p>      <aside>Flagged by hook_permission</aside>    </details>
+    <details class="error">
+      <summary>Classes must be PSR-4 compliant.</summary>
+
+      
+            <h5>Documentation</h5>
+      <ul>
+                <li><a target="_blank" href="https://www.drupal.org/node/2246699">PSR-4 compatible class loader in Drupal core</a></li>
+              </ul>
+      
+                      </details>
+    <details class="error">
+      <summary><code>drupal_goto()</code> has been removed.</summary>
+
+      
+            <h5>Documentation</h5>
+      <ul>
+                <li><a target="_blank" href="https://www.drupal.org/node/2023537"><code>drupal_goto()</code> removed</a></li>
+              </ul>
+      
+            <h5>Files Affected</h5>
+      <ul>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 22</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 38</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 43</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 54</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 131</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 136</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 147</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 380</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 582</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 588</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 593</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 598</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 603</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 621</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 626</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 698</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 703</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 716</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 729</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 743</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 777</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 795</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 801</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 806</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 811</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 816</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 832</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 854</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 1195</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 1279</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 1360</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 1440</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 1528</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 1536</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 1753</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 1845</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 1850</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 1861</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 1866</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesEditForm.php, line 27</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesEditForm.php, line 32</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesEditForm.php, line 77</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesEditForm.php, line 90</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesEditForm.php, line 95</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesEditForm.php, line 108</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesEditForm.php, line 113</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesEditForm.php, line 306</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesEditForm.php, line 311</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesEditForm.php, line 324</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesEditForm.php, line 337</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesEditForm.php, line 342</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesEditForm.php, line 355</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesEditForm.php, line 360</li>
+              <li>modules/custom/r_textbook_companion/src/EditChapterTitleForm.php, line 27</li>
+              <li>modules/custom/r_textbook_companion/src/EditChapterTitleForm.php, line 33</li>
+              <li>modules/custom/r_textbook_companion/src/EditChapterTitleForm.php, line 38</li>
+              <li>modules/custom/r_textbook_companion/src/EditChapterTitleForm.php, line 43</li>
+              <li>modules/custom/r_textbook_companion/src/EditChapterTitleForm.php, line 48</li>
+              <li>modules/custom/r_textbook_companion/src/EditChapterTitleForm.php, line 64</li>
+              <li>modules/custom/r_textbook_companion/src/EditChapterTitleForm.php, line 79</li>
+              <li>modules/custom/r_textbook_companion/src/EditChapterTitleForm.php, line 137</li>
+              <li>modules/custom/r_textbook_companion/src/EditChapterTitleForm.php, line 143</li>
+              <li>modules/custom/r_textbook_companion/src/EditChapterTitleForm.php, line 148</li>
+              <li>modules/custom/r_textbook_companion/src/EditChapterTitleForm.php, line 153</li>
+              <li>modules/custom/r_textbook_companion/src/EditChapterTitleForm.php, line 158</li>
+              <li>modules/custom/r_textbook_companion/src/EditChapterTitleForm.php, line 174</li>
+              <li>modules/custom/r_textbook_companion/src/EditChapterTitleForm.php, line 189</li>
+              <li>modules/custom/r_textbook_companion/src/CodeApprovalForm.php, line 219</li>
+              <li>modules/custom/r_textbook_companion/editcode.inc, line 22</li>
+              <li>modules/custom/r_textbook_companion/editcode.inc, line 28</li>
+              <li>modules/custom/r_textbook_companion/editcode.inc, line 81</li>
+              <li>modules/custom/r_textbook_companion/editcode.inc, line 95</li>
+              <li>modules/custom/r_textbook_companion/editcode.inc, line 101</li>
+              <li>modules/custom/r_textbook_companion/editcode.inc, line 115</li>
+              <li>modules/custom/r_textbook_companion/editcode.inc, line 121</li>
+              <li>modules/custom/r_textbook_companion/editcode.inc, line 320</li>
+              <li>modules/custom/r_textbook_companion/editcode.inc, line 326</li>
+              <li>modules/custom/r_textbook_companion/editcode.inc, line 340</li>
+              <li>modules/custom/r_textbook_companion/editcode.inc, line 354</li>
+              <li>modules/custom/r_textbook_companion/editcode.inc, line 360</li>
+              <li>modules/custom/r_textbook_companion/editcode.inc, line 374</li>
+              <li>modules/custom/r_textbook_companion/editcode.inc, line 380</li>
+              <li>modules/custom/r_textbook_companion/editcode.inc, line 607</li>
+              <li>modules/custom/r_textbook_companion/editcode.inc, line 615</li>
+              <li>modules/custom/r_textbook_companion/editcode.inc, line 623</li>
+              <li>modules/custom/r_textbook_companion/editcode.inc, line 631</li>
+              <li>modules/custom/r_textbook_companion/editcode.inc, line 636</li>
+              <li>modules/custom/r_textbook_companion/editcode.inc, line 653</li>
+              <li>modules/custom/r_textbook_companion/editcode.inc, line 669</li>
+              <li>modules/custom/r_textbook_companion/editcode.inc, line 733</li>
+              <li>modules/custom/r_textbook_companion/editcode.inc, line 741</li>
+              <li>modules/custom/r_textbook_companion/editcode.inc, line 749</li>
+              <li>modules/custom/r_textbook_companion/editcode.inc, line 757</li>
+              <li>modules/custom/r_textbook_companion/editcode.inc, line 762</li>
+              <li>modules/custom/r_textbook_companion/editcode.inc, line 779</li>
+              <li>modules/custom/r_textbook_companion/editcode.inc, line 795</li>
+              <li>modules/custom/r_textbook_companion/general.inc, line 22</li>
+              <li>modules/custom/r_textbook_companion/general.inc, line 30</li>
+              <li>modules/custom/r_textbook_companion/general.inc, line 38</li>
+              <li>modules/custom/r_textbook_companion/general.inc, line 46</li>
+              <li>modules/custom/r_textbook_companion/general.inc, line 51</li>
+              <li>modules/custom/r_textbook_companion/general.inc, line 70</li>
+              <li>modules/custom/r_textbook_companion/general.inc, line 76</li>
+              <li>modules/custom/r_textbook_companion/general.inc, line 163</li>
+              <li>modules/custom/r_textbook_companion/general.inc, line 171</li>
+              <li>modules/custom/r_textbook_companion/general.inc, line 179</li>
+              <li>modules/custom/r_textbook_companion/general.inc, line 187</li>
+              <li>modules/custom/r_textbook_companion/general.inc, line 192</li>
+              <li>modules/custom/r_textbook_companion/general.inc, line 209</li>
+              <li>modules/custom/r_textbook_companion/general.inc, line 233</li>
+              <li>modules/custom/r_textbook_companion/general.inc, line 443</li>
+              <li>modules/custom/r_textbook_companion/general.inc, line 451</li>
+              <li>modules/custom/r_textbook_companion/general.inc, line 459</li>
+              <li>modules/custom/r_textbook_companion/general.inc, line 467</li>
+              <li>modules/custom/r_textbook_companion/general.inc, line 472</li>
+              <li>modules/custom/r_textbook_companion/general.inc, line 477</li>
+              <li>modules/custom/r_textbook_companion/general.inc, line 492</li>
+              <li>modules/custom/r_textbook_companion/code_approval.inc, line 298</li>
+              <li>modules/custom/r_textbook_companion/code_approval.inc, line 1666</li>
+              <li>modules/custom/r_textbook_companion/code_approval.inc, line 1768</li>
+              <li>modules/custom/r_textbook_companion/code_approval.inc, line 1951</li>
+              <li>modules/custom/r_textbook_companion/code_approval.inc, line 1982</li>
+              <li>modules/custom/r_textbook_companion/src/Form/CodableExamplesApprovalForm.php, line 141</li>
+              <li>modules/custom/r_textbook_companion/src/Form/CodableExamplesApprovalForm.php, line 175</li>
+              <li>modules/custom/r_textbook_companion/dependency.inc, line 22</li>
+              <li>modules/custom/r_textbook_companion/dependency.inc, line 30</li>
+              <li>modules/custom/r_textbook_companion/dependency.inc, line 38</li>
+              <li>modules/custom/r_textbook_companion/dependency.inc, line 46</li>
+              <li>modules/custom/r_textbook_companion/dependency.inc, line 51</li>
+              <li>modules/custom/r_textbook_companion/dependency.inc, line 68</li>
+              <li>modules/custom/r_textbook_companion/dependency.inc, line 195</li>
+              <li>modules/custom/r_textbook_companion/dependency.inc, line 203</li>
+              <li>modules/custom/r_textbook_companion/dependency.inc, line 211</li>
+              <li>modules/custom/r_textbook_companion/dependency.inc, line 219</li>
+              <li>modules/custom/r_textbook_companion/dependency.inc, line 224</li>
+              <li>modules/custom/r_textbook_companion/dependency.inc, line 241</li>
+              <li>modules/custom/r_textbook_companion/dependency.inc, line 309</li>
+              <li>modules/custom/r_textbook_companion/dependency.inc, line 385</li>
+              <li>modules/custom/r_textbook_companion/dependency.inc, line 393</li>
+              <li>modules/custom/r_textbook_companion/dependency.inc, line 401</li>
+              <li>modules/custom/r_textbook_companion/dependency.inc, line 409</li>
+              <li>modules/custom/r_textbook_companion/dependency.inc, line 414</li>
+              <li>modules/custom/r_textbook_companion/dependency.inc, line 431</li>
+              <li>modules/custom/r_textbook_companion/dependency.inc, line 550</li>
+              <li>modules/custom/r_textbook_companion/dependency.inc, line 558</li>
+              <li>modules/custom/r_textbook_companion/dependency.inc, line 566</li>
+              <li>modules/custom/r_textbook_companion/dependency.inc, line 574</li>
+              <li>modules/custom/r_textbook_companion/dependency.inc, line 579</li>
+              <li>modules/custom/r_textbook_companion/dependency.inc, line 596</li>
+              <li>modules/custom/r_textbook_companion/dependency.inc, line 684</li>
+              <li>modules/custom/r_textbook_companion/dependency.inc, line 696</li>
+              <li>modules/custom/r_textbook_companion/dependency.inc, line 719</li>
+              <li>modules/custom/r_textbook_companion/dependency.inc, line 727</li>
+              <li>modules/custom/r_textbook_companion/dependency.inc, line 735</li>
+              <li>modules/custom/r_textbook_companion/dependency.inc, line 743</li>
+              <li>modules/custom/r_textbook_companion/dependency.inc, line 748</li>
+              <li>modules/custom/r_textbook_companion/dependency.inc, line 765</li>
+              <li>modules/custom/r_textbook_companion/dependency.inc, line 809</li>
+              <li>modules/custom/r_textbook_companion/dependency.inc, line 814</li>
+              <li>modules/custom/r_textbook_companion/dependency.inc, line 869</li>
+              <li>modules/custom/r_textbook_companion/dependency.inc, line 874</li>
+              <li>modules/custom/r_textbook_companion/src/EditCodeSubmissionForm.php, line 24</li>
+              <li>modules/custom/r_textbook_companion/src/EditCodeSubmissionForm.php, line 124</li>
+              <li>modules/custom/r_textbook_companion/src/ChequeStatusForm.php, line 35</li>
+              <li>modules/custom/r_textbook_companion/src/ChequeStatusForm.php, line 462</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesAdminEditForm.php, line 27</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesAdminEditForm.php, line 68</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesAdminEditForm.php, line 81</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesAdminEditForm.php, line 94</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesAdminEditForm.php, line 283</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesAdminEditForm.php, line 296</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesAdminEditForm.php, line 309</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesAdminEditForm.php, line 322</li>
+              <li>modules/custom/r_textbook_companion/notes.inc, line 26</li>
+              <li>modules/custom/r_textbook_companion/notes.inc, line 33</li>
+              <li>modules/custom/r_textbook_companion/notes.inc, line 93</li>
+              <li>modules/custom/r_textbook_companion/notes.inc, line 100</li>
+              <li>modules/custom/r_textbook_companion/src/Form/CodeApprovalForm.php, line 229</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesEditForm.php, line 37</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesEditForm.php, line 42</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesEditForm.php, line 87</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesEditForm.php, line 100</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesEditForm.php, line 105</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesEditForm.php, line 118</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesEditForm.php, line 123</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesEditForm.php, line 316</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesEditForm.php, line 321</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesEditForm.php, line 334</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesEditForm.php, line 347</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesEditForm.php, line 352</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesEditForm.php, line 365</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesEditForm.php, line 370</li>
+              <li>modules/custom/r_textbook_companion/src/ContactDetails.php, line 334</li>
+              <li>modules/custom/r_textbook_companion/src/BookNotesForm.php, line 29</li>
+              <li>modules/custom/r_textbook_companion/src/BookNotesForm.php, line 35</li>
+              <li>modules/custom/r_textbook_companion/src/BookNotesForm.php, line 88</li>
+              <li>modules/custom/r_textbook_companion/src/BookNotesForm.php, line 94</li>
+              <li>modules/custom/r_textbook_companion/cheque_contact.inc, line 511</li>
+              <li>modules/custom/r_textbook_companion/cheque_contact.inc, line 923</li>
+              <li>modules/custom/r_textbook_companion/cheque_contact.inc, line 1409</li>
+              <li>modules/custom/r_textbook_companion/textbook_companion.module, line 985</li>
+              <li>modules/custom/r_textbook_companion/textbook_companion.module, line 993</li>
+              <li>modules/custom/r_textbook_companion/textbook_companion.module, line 1004</li>
+              <li>modules/custom/r_textbook_companion/textbook_companion.module, line 1052</li>
+              <li>modules/custom/r_textbook_companion/textbook_companion.module, line 1060</li>
+              <li>modules/custom/r_textbook_companion/textbook_companion.module, line 1071</li>
+              <li>modules/custom/r_textbook_companion/textbook_companion.module, line 1076</li>
+              <li>modules/custom/r_textbook_companion/textbook_companion.module, line 1095</li>
+              <li>modules/custom/r_textbook_companion/textbook_companion.module, line 1114</li>
+              <li>modules/custom/r_textbook_companion/textbook_companion.module, line 1122</li>
+              <li>modules/custom/r_textbook_companion/textbook_companion.module, line 1133</li>
+              <li>modules/custom/r_textbook_companion/textbook_companion.module, line 1868</li>
+              <li>modules/custom/r_textbook_companion/textbook_companion.module, line 3922</li>
+              <li>modules/custom/r_textbook_companion/src/Form/EditCodeSubmissionForm.php, line 34</li>
+              <li>modules/custom/r_textbook_companion/src/Form/EditCodeSubmissionForm.php, line 134</li>
+              <li>modules/custom/r_textbook_companion/src/Form/EditChapterTitleForm.php, line 37</li>
+              <li>modules/custom/r_textbook_companion/src/Form/EditChapterTitleForm.php, line 43</li>
+              <li>modules/custom/r_textbook_companion/src/Form/EditChapterTitleForm.php, line 48</li>
+              <li>modules/custom/r_textbook_companion/src/Form/EditChapterTitleForm.php, line 53</li>
+              <li>modules/custom/r_textbook_companion/src/Form/EditChapterTitleForm.php, line 58</li>
+              <li>modules/custom/r_textbook_companion/src/Form/EditChapterTitleForm.php, line 74</li>
+              <li>modules/custom/r_textbook_companion/src/Form/EditChapterTitleForm.php, line 89</li>
+              <li>modules/custom/r_textbook_companion/src/Form/EditChapterTitleForm.php, line 147</li>
+              <li>modules/custom/r_textbook_companion/src/Form/EditChapterTitleForm.php, line 153</li>
+              <li>modules/custom/r_textbook_companion/src/Form/EditChapterTitleForm.php, line 158</li>
+              <li>modules/custom/r_textbook_companion/src/Form/EditChapterTitleForm.php, line 163</li>
+              <li>modules/custom/r_textbook_companion/src/Form/EditChapterTitleForm.php, line 168</li>
+              <li>modules/custom/r_textbook_companion/src/Form/EditChapterTitleForm.php, line 184</li>
+              <li>modules/custom/r_textbook_companion/src/Form/EditChapterTitleForm.php, line 199</li>
+              <li>modules/custom/r_textbook_companion/download.inc, line 142</li>
+              <li>modules/custom/r_textbook_companion/download.inc, line 205</li>
+              <li>modules/custom/r_textbook_companion/download.inc, line 292</li>
+              <li>modules/custom/r_textbook_companion/manage_proposal.inc, line 205</li>
+              <li>modules/custom/r_textbook_companion/manage_proposal.inc, line 210</li>
+              <li>modules/custom/r_textbook_companion/manage_proposal.inc, line 430</li>
+              <li>modules/custom/r_textbook_companion/manage_proposal.inc, line 435</li>
+              <li>modules/custom/r_textbook_companion/manage_proposal.inc, line 478</li>
+              <li>modules/custom/r_textbook_companion/manage_proposal.inc, line 537</li>
+              <li>modules/custom/r_textbook_companion/manage_proposal.inc, line 555</li>
+              <li>modules/custom/r_textbook_companion/manage_proposal.inc, line 820</li>
+              <li>modules/custom/r_textbook_companion/manage_proposal.inc, line 859</li>
+              <li>modules/custom/r_textbook_companion/manage_proposal.inc, line 893</li>
+              <li>modules/custom/r_textbook_companion/manage_proposal.inc, line 896</li>
+              <li>modules/custom/r_textbook_companion/manage_proposal.inc, line 1709</li>
+              <li>modules/custom/r_textbook_companion/manage_proposal.inc, line 1775</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ProposalStatusForm.php, line 34</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ProposalStatusForm.php, line 295</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ProposalStatusForm.php, line 335</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ProposalStatusForm.php, line 374</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ProposalStatusForm.php, line 378</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BookNotesForm.php, line 39</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BookNotesForm.php, line 45</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BookNotesForm.php, line 98</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BookNotesForm.php, line 104</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ChequeStatusForm.php, line 45</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ChequeStatusForm.php, line 472</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ContactDetails.php, line 344</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesAdminEditForm.php, line 37</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesAdminEditForm.php, line 78</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesAdminEditForm.php, line 91</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesAdminEditForm.php, line 104</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesAdminEditForm.php, line 293</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesAdminEditForm.php, line 306</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesAdminEditForm.php, line 319</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesAdminEditForm.php, line 332</li>
+              <li>modules/custom/r_textbook_companion/src/ProposalApprovalForm.php, line 29</li>
+              <li>modules/custom/r_textbook_companion/src/ProposalApprovalForm.php, line 35</li>
+              <li>modules/custom/r_textbook_companion/src/ProposalApprovalForm.php, line 240</li>
+              <li>modules/custom/r_textbook_companion/src/ProposalApprovalForm.php, line 246</li>
+              <li>modules/custom/r_textbook_companion/src/ProposalApprovalForm.php, line 288</li>
+              <li>modules/custom/r_textbook_companion/src/ProposalApprovalForm.php, line 346</li>
+              <li>modules/custom/r_textbook_companion/full_download.inc, line 86</li>
+              <li>modules/custom/r_textbook_companion/full_download.inc, line 181</li>
+              <li>modules/custom/r_textbook_companion/latex.inc, line 33</li>
+              <li>modules/custom/r_textbook_companion/latex.inc, line 38</li>
+              <li>modules/custom/r_textbook_companion/latex.inc, line 194</li>
+              <li>modules/custom/r_textbook_companion/latex.inc, line 239</li>
+              <li>modules/custom/r_textbook_companion/code.inc, line 26</li>
+              <li>modules/custom/r_textbook_companion/code.inc, line 34</li>
+              <li>modules/custom/r_textbook_companion/code.inc, line 42</li>
+              <li>modules/custom/r_textbook_companion/code.inc, line 50</li>
+              <li>modules/custom/r_textbook_companion/code.inc, line 55</li>
+              <li>modules/custom/r_textbook_companion/code.inc, line 59</li>
+              <li>modules/custom/r_textbook_companion/code.inc, line 76</li>
+              <li>modules/custom/r_textbook_companion/code.inc, line 245</li>
+              <li>modules/custom/r_textbook_companion/code.inc, line 253</li>
+              <li>modules/custom/r_textbook_companion/code.inc, line 261</li>
+              <li>modules/custom/r_textbook_companion/code.inc, line 269</li>
+              <li>modules/custom/r_textbook_companion/code.inc, line 274</li>
+              <li>modules/custom/r_textbook_companion/code.inc, line 279</li>
+              <li>modules/custom/r_textbook_companion/code.inc, line 296</li>
+              <li>modules/custom/r_textbook_companion/code.inc, line 367</li>
+              <li>modules/custom/r_textbook_companion/code.inc, line 373</li>
+              <li>modules/custom/r_textbook_companion/code.inc, line 379</li>
+              <li>modules/custom/r_textbook_companion/code.inc, line 536</li>
+              <li>modules/custom/r_textbook_companion/code.inc, line 561</li>
+              <li>modules/custom/r_textbook_companion/code.inc, line 567</li>
+              <li>modules/custom/r_textbook_companion/code.inc, line 581</li>
+              <li>modules/custom/r_textbook_companion/code.inc, line 595</li>
+              <li>modules/custom/r_textbook_companion/code.inc, line 610</li>
+              <li>modules/custom/r_textbook_companion/code.inc, line 645</li>
+              <li>modules/custom/r_textbook_companion/editcodeadmin.inc, line 22</li>
+              <li>modules/custom/r_textbook_companion/editcodeadmin.inc, line 71</li>
+              <li>modules/custom/r_textbook_companion/editcodeadmin.inc, line 85</li>
+              <li>modules/custom/r_textbook_companion/editcodeadmin.inc, line 99</li>
+              <li>modules/custom/r_textbook_companion/editcodeadmin.inc, line 294</li>
+              <li>modules/custom/r_textbook_companion/editcodeadmin.inc, line 308</li>
+              <li>modules/custom/r_textbook_companion/editcodeadmin.inc, line 322</li>
+              <li>modules/custom/r_textbook_companion/editcodeadmin.inc, line 336</li>
+              <li>modules/custom/r_textbook_companion/pdf/list_all_certificates.inc, line 59</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ProposalApprovalForm.php, line 39</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ProposalApprovalForm.php, line 45</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ProposalApprovalForm.php, line 250</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ProposalApprovalForm.php, line 256</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ProposalApprovalForm.php, line 298</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ProposalApprovalForm.php, line 356</li>
+              <li>modules/custom/r_textbook_companion/src/ProposalStatusForm.php, line 24</li>
+              <li>modules/custom/r_textbook_companion/src/ProposalStatusForm.php, line 285</li>
+              <li>modules/custom/r_textbook_companion/src/ProposalStatusForm.php, line 325</li>
+              <li>modules/custom/r_textbook_companion/src/ProposalStatusForm.php, line 364</li>
+              <li>modules/custom/r_textbook_companion/src/ProposalStatusForm.php, line 368</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 28</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 44</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 49</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 60</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 137</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 142</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 153</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 386</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 588</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 594</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 599</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 604</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 609</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 627</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 632</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 704</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 709</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 722</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 735</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 749</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 783</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 801</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 807</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 812</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 817</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 822</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 838</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 860</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 1201</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 1285</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 1366</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 1446</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 1534</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 1542</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 1759</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 1851</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 1856</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 1867</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 1872</li>
+              <li>modules/custom/r_textbook_companion/src/CodableExamplesApprovalForm.php, line 131</li>
+              <li>modules/custom/r_textbook_companion/src/CodableExamplesApprovalForm.php, line 165</li>
+            </ul>
+                  <aside>Flagged by _function_call:drupal_goto</aside>    </details>
+    <details class="error">
+      <summary><code>drupal_render()</code> has been removed.</summary>
+
+      
+      
+            <h5>Files Affected</h5>
+      <ul>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 13</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 61</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 159</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 674</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 1817</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 1874</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 19</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 67</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 165</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 680</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 1823</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 1880</li>
+            </ul>
+                  <aside>Flagged by _function_call:drupal_render</aside>    </details>
+    <details class="error">
+      <summary><code>user_load()</code> has been removed.</summary>
+
+      
+            <h5>Documentation</h5>
+      <ul>
+                <li><a target="_blank" href="https://www.drupal.org/node/2266845">Entities are now classed objects implementing <code>EntityInterface</code></a></li>
+              </ul>
+      
+            <h5>Files Affected</h5>
+      <ul>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesEditForm.php, line 116</li>
+              <li>modules/custom/r_textbook_companion/src/CodeApprovalForm.php, line 153</li>
+              <li>modules/custom/r_textbook_companion/src/Form/CodableExamplesApprovalForm.php, line 113</li>
+              <li>modules/custom/r_textbook_companion/src/EditCodeSubmissionForm.php, line 104</li>
+              <li>modules/custom/r_textbook_companion/src/ChequeStatusForm.php, line 72</li>
+              <li>modules/custom/r_textbook_companion/src/ChequeStatusForm.php, line 530</li>
+              <li>modules/custom/r_textbook_companion/src/ChequeStatusForm.php, line 569</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesAdminEditForm.php, line 97</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesAdminEditForm.php, line 325</li>
+              <li>modules/custom/r_textbook_companion/src/ProposalEditForm.php, line 33</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ProposalEditForm.php, line 43</li>
+              <li>modules/custom/r_textbook_companion/src/Form/PaperSubmissionForm.php, line 110</li>
+              <li>modules/custom/r_textbook_companion/src/Form/PaperSubmissionForm.php, line 132</li>
+              <li>modules/custom/r_textbook_companion/src/Form/PaperSubmissionForm.php, line 154</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 236</li>
+              <li>modules/custom/r_textbook_companion/src/Form/CodeApprovalForm.php, line 163</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesEditForm.php, line 126</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 226</li>
+              <li>modules/custom/r_textbook_companion/src/Form/EditCodeSubmissionForm.php, line 114</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ProposalStatusForm.php, line 44</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ProposalStatusForm.php, line 314</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ProposalStatusForm.php, line 351</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ChequeStatusForm.php, line 82</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ChequeStatusForm.php, line 540</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ChequeStatusForm.php, line 579</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesAdminEditForm.php, line 107</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesAdminEditForm.php, line 335</li>
+              <li>modules/custom/r_textbook_companion/src/ProposalApprovalForm.php, line 45</li>
+              <li>modules/custom/r_textbook_companion/src/ProposalApprovalForm.php, line 268</li>
+              <li>modules/custom/r_textbook_companion/src/ProposalApprovalForm.php, line 325</li>
+              <li>modules/custom/r_textbook_companion/src/PaperSubmissionForm.php, line 100</li>
+              <li>modules/custom/r_textbook_companion/src/PaperSubmissionForm.php, line 122</li>
+              <li>modules/custom/r_textbook_companion/src/PaperSubmissionForm.php, line 144</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ProposalApprovalForm.php, line 55</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ProposalApprovalForm.php, line 278</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ProposalApprovalForm.php, line 335</li>
+              <li>modules/custom/r_textbook_companion/src/ProposalStatusForm.php, line 34</li>
+              <li>modules/custom/r_textbook_companion/src/ProposalStatusForm.php, line 304</li>
+              <li>modules/custom/r_textbook_companion/src/ProposalStatusForm.php, line 341</li>
+              <li>modules/custom/r_textbook_companion/src/CodableExamplesApprovalForm.php, line 103</li>
+            </ul>
+                  <aside>Flagged by _function_call:user_load</aside>    </details>
+    <details class="error">
+      <summary><code>drupal_get_form()</code> has moved into the FormBuilder service.</summary>
+
+      
+            <h5>Documentation</h5>
+      <ul>
+                <li><a target="_blank" href="https://www.drupal.org/node/2121003">Form generation functions moved into FormBuilder service</a></li>
+              </ul>
+      
+            <h5>Files Affected</h5>
+      <ul>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 12</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 60</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 158</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 673</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 679</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 1638</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 1816</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 1873</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 18</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 66</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 164</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 679</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 685</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 1644</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 1822</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 1879</li>
+            </ul>
+                  <aside>Flagged by _function_call:drupal_get_form</aside>    </details>
+    <details class="error">
+      <summary><code>form_set_error()</code> is now a method of <code>FormStateInterface</code>.</summary>
+
+      
+            <h5>Documentation</h5>
+      <ul>
+                <li><a target="_blank" href="https://www.drupal.org/node/2121003">Form functions moved into <code>FormStateInterface</code></a></li>
+              </ul>
+      
+            <h5>Files Affected</h5>
+      <ul>
+              <li>modules/custom/r_textbook_companion/editcode.inc, line 267</li>
+              <li>modules/custom/r_textbook_companion/editcode.inc, line 294</li>
+              <li>modules/custom/r_textbook_companion/editcode.inc, line 296</li>
+              <li>modules/custom/r_textbook_companion/editcode.inc, line 299</li>
+              <li>modules/custom/r_textbook_companion/editcode.inc, line 712</li>
+              <li>modules/custom/r_textbook_companion/general.inc, line 396</li>
+              <li>modules/custom/r_textbook_companion/general.inc, line 402</li>
+              <li>modules/custom/r_textbook_companion/general.inc, line 414</li>
+              <li>modules/custom/r_textbook_companion/general.inc, line 416</li>
+              <li>modules/custom/r_textbook_companion/general.inc, line 419</li>
+              <li>modules/custom/r_textbook_companion/code_approval.inc, line 669</li>
+              <li>modules/custom/r_textbook_companion/code_approval.inc, line 736</li>
+              <li>modules/custom/r_textbook_companion/code_approval.inc, line 967</li>
+              <li>modules/custom/r_textbook_companion/code_approval.inc, line 1145</li>
+              <li>modules/custom/r_textbook_companion/code_approval.inc, line 1726</li>
+              <li>modules/custom/r_textbook_companion/dependency.inc, line 156</li>
+              <li>modules/custom/r_textbook_companion/dependency.inc, line 158</li>
+              <li>modules/custom/r_textbook_companion/dependency.inc, line 167</li>
+              <li>modules/custom/r_textbook_companion/dependency.inc, line 170</li>
+              <li>modules/custom/r_textbook_companion/dependency.inc, line 504</li>
+              <li>modules/custom/r_textbook_companion/dependency.inc, line 506</li>
+              <li>modules/custom/r_textbook_companion/dependency.inc, line 522</li>
+              <li>modules/custom/r_textbook_companion/dependency.inc, line 525</li>
+              <li>modules/custom/r_textbook_companion/textbook_companion.module, line 1577</li>
+              <li>modules/custom/r_textbook_companion/textbook_companion.module, line 1580</li>
+              <li>modules/custom/r_textbook_companion/textbook_companion.module, line 1586</li>
+              <li>modules/custom/r_textbook_companion/textbook_companion.module, line 1588</li>
+              <li>modules/custom/r_textbook_companion/textbook_companion.module, line 1592</li>
+              <li>modules/custom/r_textbook_companion/textbook_companion.module, line 1595</li>
+              <li>modules/custom/r_textbook_companion/textbook_companion.module, line 1597</li>
+              <li>modules/custom/r_textbook_companion/textbook_companion.module, line 1599</li>
+              <li>modules/custom/r_textbook_companion/textbook_companion.module, line 1601</li>
+              <li>modules/custom/r_textbook_companion/textbook_companion.module, line 1619</li>
+              <li>modules/custom/r_textbook_companion/textbook_companion.module, line 1626</li>
+              <li>modules/custom/r_textbook_companion/textbook_companion.module, line 1632</li>
+              <li>modules/custom/r_textbook_companion/textbook_companion.module, line 1636</li>
+              <li>modules/custom/r_textbook_companion/textbook_companion.module, line 1642</li>
+              <li>modules/custom/r_textbook_companion/textbook_companion.module, line 1646</li>
+              <li>modules/custom/r_textbook_companion/textbook_companion.module, line 1653</li>
+              <li>modules/custom/r_textbook_companion/textbook_companion.module, line 1675</li>
+              <li>modules/custom/r_textbook_companion/textbook_companion.module, line 1677</li>
+              <li>modules/custom/r_textbook_companion/textbook_companion.module, line 1680</li>
+              <li>modules/custom/r_textbook_companion/textbook_companion.module, line 1688</li>
+              <li>modules/custom/r_textbook_companion/textbook_companion.module, line 4059</li>
+              <li>modules/custom/r_textbook_companion/textbook_companion.module, line 4076</li>
+              <li>modules/custom/r_textbook_companion/manage_proposal.inc, line 409</li>
+              <li>modules/custom/r_textbook_companion/manage_proposal.inc, line 1300</li>
+              <li>modules/custom/r_textbook_companion/manage_proposal.inc, line 1303</li>
+              <li>modules/custom/r_textbook_companion/manage_proposal.inc, line 1309</li>
+              <li>modules/custom/r_textbook_companion/manage_proposal.inc, line 1314</li>
+              <li>modules/custom/r_textbook_companion/manage_proposal.inc, line 1317</li>
+              <li>modules/custom/r_textbook_companion/manage_proposal.inc, line 1321</li>
+              <li>modules/custom/r_textbook_companion/manage_proposal.inc, line 1324</li>
+              <li>modules/custom/r_textbook_companion/manage_proposal.inc, line 1327</li>
+              <li>modules/custom/r_textbook_companion/manage_proposal.inc, line 1333</li>
+              <li>modules/custom/r_textbook_companion/manage_proposal.inc, line 1337</li>
+              <li>modules/custom/r_textbook_companion/code.inc, line 178</li>
+              <li>modules/custom/r_textbook_companion/code.inc, line 180</li>
+              <li>modules/custom/r_textbook_companion/code.inc, line 182</li>
+              <li>modules/custom/r_textbook_companion/code.inc, line 215</li>
+              <li>modules/custom/r_textbook_companion/code.inc, line 217</li>
+              <li>modules/custom/r_textbook_companion/editcodeadmin.inc, line 241</li>
+              <li>modules/custom/r_textbook_companion/editcodeadmin.inc, line 268</li>
+              <li>modules/custom/r_textbook_companion/editcodeadmin.inc, line 270</li>
+              <li>modules/custom/r_textbook_companion/editcodeadmin.inc, line 273</li>
+            </ul>
+                  <aside>Flagged by _function_call:form_set_error</aside>    </details>
+    <details class="error">
+      <summary><code>l()</code> has been removed.</summary>
+
+      
+            <h5>Documentation</h5>
+      <ul>
+                <li><a target="_blank" href="https://www.drupal.org/node/2346779"><code>l()</code> replaced by URL generation API</a></li>
+              </ul>
+      
+            <h5>Files Affected</h5>
+      <ul>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 42</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 135</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 175</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 177</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 177</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 295</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 299</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 299</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 402</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 403</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 439</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 506</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 547</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 581</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 592</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 597</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 633</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 653</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 655</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 794</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 805</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 810</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 857</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 900</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 909</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 909</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 925</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 964</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 1026</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 1084</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 1614</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 1660</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 1723</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 1725</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 1725</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 1777</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 1849</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesEditForm.php, line 55</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesEditForm.php, line 61</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesEditForm.php, line 243</li>
+              <li>modules/custom/r_textbook_companion/src/EditChapterTitleForm.php, line 26</li>
+              <li>modules/custom/r_textbook_companion/src/EditChapterTitleForm.php, line 37</li>
+              <li>modules/custom/r_textbook_companion/src/EditChapterTitleForm.php, line 42</li>
+              <li>modules/custom/r_textbook_companion/src/EditChapterTitleForm.php, line 112</li>
+              <li>modules/custom/r_textbook_companion/src/EditChapterTitleForm.php, line 136</li>
+              <li>modules/custom/r_textbook_companion/src/EditChapterTitleForm.php, line 147</li>
+              <li>modules/custom/r_textbook_companion/src/EditChapterTitleForm.php, line 152</li>
+              <li>modules/custom/r_textbook_companion/src/CodeApprovalForm.php, line 67</li>
+              <li>modules/custom/r_textbook_companion/src/CodeApprovalForm.php, line 94</li>
+              <li>modules/custom/r_textbook_companion/src/Form/TextbookCompanionSearchForm.php, line 46</li>
+              <li>modules/custom/r_textbook_companion/src/Form/TextbookCompanionSearchForm.php, line 88</li>
+              <li>modules/custom/r_textbook_companion/src/Form/TextbookCompanionBookRunForm.php, line 97</li>
+              <li>modules/custom/r_textbook_companion/src/Form/TextbookCompanionBookRunForm.php, line 101</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ChequeContctForm.php, line 52</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ChequeContctForm.php, line 57</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ChequeContctForm.php, line 73</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ChequeContctForm.php, line 120</li>
+              <li>modules/custom/r_textbook_companion/src/Form/CodableExamplesApprovalForm.php, line 70</li>
+              <li>modules/custom/r_textbook_companion/src/Form/CodableExamplesApprovalForm.php, line 95</li>
+              <li>modules/custom/r_textbook_companion/src/EditCodeSubmissionForm.php, line 74</li>
+              <li>modules/custom/r_textbook_companion/src/ChequeStatusForm.php, line 471</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesAdminEditForm.php, line 48</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesAdminEditForm.php, line 53</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesAdminEditForm.php, line 220</li>
+              <li>modules/custom/r_textbook_companion/src/ProposalEditForm.php, line 384</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ProposalEditForm.php, line 394</li>
+              <li>modules/custom/r_textbook_companion/src/Form/PaperSubmissionForm.php, line 85</li>
+              <li>modules/custom/r_textbook_companion/src/TextbookCompanionBookRunForm.php, line 87</li>
+              <li>modules/custom/r_textbook_companion/src/TextbookCompanionBookRunForm.php, line 91</li>
+              <li>modules/custom/r_textbook_companion/src/Form/CodeApprovalForm.php, line 77</li>
+              <li>modules/custom/r_textbook_companion/src/Form/CodeApprovalForm.php, line 104</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesEditForm.php, line 65</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesEditForm.php, line 71</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesEditForm.php, line 253</li>
+              <li>modules/custom/r_textbook_companion/src/ContactDetails.php, line 283</li>
+              <li>modules/custom/r_textbook_companion/src/BookNotesForm.php, line 67</li>
+              <li>modules/custom/r_textbook_companion/src/TextbookCompanionRunForm.php, line 61</li>
+              <li>modules/custom/r_textbook_companion/src/TextbookCompanionRunForm.php, line 65</li>
+              <li>modules/custom/r_textbook_companion/src/Form/TextbookCompanionRunForm.php, line 71</li>
+              <li>modules/custom/r_textbook_companion/src/Form/TextbookCompanionRunForm.php, line 75</li>
+              <li>modules/custom/r_textbook_companion/src/TextbookCompanionSearchForm.php, line 36</li>
+              <li>modules/custom/r_textbook_companion/src/TextbookCompanionSearchForm.php, line 78</li>
+              <li>modules/custom/r_textbook_companion/src/Form/EditCodeSubmissionForm.php, line 84</li>
+              <li>modules/custom/r_textbook_companion/src/Form/EditChapterTitleForm.php, line 36</li>
+              <li>modules/custom/r_textbook_companion/src/Form/EditChapterTitleForm.php, line 47</li>
+              <li>modules/custom/r_textbook_companion/src/Form/EditChapterTitleForm.php, line 52</li>
+              <li>modules/custom/r_textbook_companion/src/Form/EditChapterTitleForm.php, line 122</li>
+              <li>modules/custom/r_textbook_companion/src/Form/EditChapterTitleForm.php, line 146</li>
+              <li>modules/custom/r_textbook_companion/src/Form/EditChapterTitleForm.php, line 157</li>
+              <li>modules/custom/r_textbook_companion/src/Form/EditChapterTitleForm.php, line 162</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ProposalStatusForm.php, line 178</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ProposalStatusForm.php, line 257</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ProposalStatusForm.php, line 279</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BookNotesForm.php, line 77</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ChequeStatusForm.php, line 481</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ContactDetails.php, line 293</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesAdminEditForm.php, line 58</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesAdminEditForm.php, line 63</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesAdminEditForm.php, line 230</li>
+              <li>modules/custom/r_textbook_companion/src/ProposalApprovalForm.php, line 40</li>
+              <li>modules/custom/r_textbook_companion/src/ProposalApprovalForm.php, line 138</li>
+              <li>modules/custom/r_textbook_companion/src/ProposalApprovalForm.php, line 176</li>
+              <li>modules/custom/r_textbook_companion/src/ProposalApprovalForm.php, line 210</li>
+              <li>modules/custom/r_textbook_companion/src/PaperSubmissionForm.php, line 75</li>
+              <li>modules/custom/r_textbook_companion/src/ChequeContctForm.php, line 42</li>
+              <li>modules/custom/r_textbook_companion/src/ChequeContctForm.php, line 47</li>
+              <li>modules/custom/r_textbook_companion/src/ChequeContctForm.php, line 63</li>
+              <li>modules/custom/r_textbook_companion/src/ChequeContctForm.php, line 110</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ProposalApprovalForm.php, line 50</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ProposalApprovalForm.php, line 148</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ProposalApprovalForm.php, line 186</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ProposalApprovalForm.php, line 220</li>
+              <li>modules/custom/r_textbook_companion/src/ProposalStatusForm.php, line 168</li>
+              <li>modules/custom/r_textbook_companion/src/ProposalStatusForm.php, line 247</li>
+              <li>modules/custom/r_textbook_companion/src/ProposalStatusForm.php, line 269</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 48</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 141</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 181</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 183</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 183</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 301</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 305</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 305</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 408</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 409</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 445</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 512</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 553</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 587</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 598</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 603</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 639</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 659</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 661</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 800</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 811</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 816</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 863</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 906</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 915</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 915</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 931</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 970</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 1032</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 1090</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 1620</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 1666</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 1729</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 1731</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 1731</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 1783</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 1855</li>
+              <li>modules/custom/r_textbook_companion/src/CodableExamplesApprovalForm.php, line 60</li>
+              <li>modules/custom/r_textbook_companion/src/CodableExamplesApprovalForm.php, line 85</li>
+            </ul>
+                  <aside>Flagged by _function_call:l</aside>    </details>
+    <details class="error">
+      <summary><code>theme()</code> has been renamed to <code>_theme()</code>, and should never be called directly.</summary>
+
+      
+            <h5>Documentation</h5>
+      <ul>
+                <li><a target="_blank" href="https://www.drupal.org/node/2195739"><code>theme()</code> renamed to <code>_theme()</code> and should not be called directly</a></li>
+              </ul>
+      
+            <h5>Files Affected</h5>
+      <ul>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 191</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 316</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 443</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 522</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 561</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 669</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 938</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 976</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 1040</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 1096</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 1629</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 1741</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 1788</li>
+              <li>modules/custom/r_textbook_companion/src/Form/TextbookCompanionSearchForm.php, line 97</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ChequeContctForm.php, line 86</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ChequeContctForm.php, line 133</li>
+              <li>modules/custom/r_textbook_companion/src/TextbookCompanionSearchForm.php, line 87</li>
+              <li>modules/custom/r_textbook_companion/src/ChequeContctForm.php, line 76</li>
+              <li>modules/custom/r_textbook_companion/src/ChequeContctForm.php, line 123</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 197</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 322</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 449</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 528</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 567</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 675</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 944</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 982</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 1046</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 1102</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 1635</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 1747</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 1794</li>
+            </ul>
+                  <aside>Flagged by _function_call:theme</aside>    </details>
+    <details class="error">
+      <summary><code>user_access()</code> is now <code>AccountInterface::hasPermission()</code>.</summary>
+
+      
+            <h5>Documentation</h5>
+      <ul>
+                <li><a target="_blank" href="https://www.drupal.org/node/2049309"><code>user_access()</code> got converted to a method on the user/account interface</a></li>
+              </ul>
+      
+            <h5>Files Affected</h5>
+      <ul>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 224</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 359</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 418</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 616</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 214</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 349</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 408</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 606</li>
+            </ul>
+                  <aside>Flagged by _function_call:user_access</aside>    </details>
+    <details class="error">
+      <summary><code>variable_del()</code> has been removed.</summary>
+
+      
+            <h5>Documentation</h5>
+      <ul>
+                <li><a target="_blank" href="https://www.drupal.org/node/2183531">The Variable API has been removed</a></li>
+              </ul>
+      
+            <h5>Files Affected</h5>
+      <ul>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 153</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 159</li>
+            </ul>
+                  <aside>Flagged by _function_call:variable_del</aside>    </details>
+    <details class="error">
+      <summary><code>variable_get()</code> has been removed.</summary>
+
+      
+            <h5>Documentation</h5>
+      <ul>
+                <li><a target="_blank" href="https://www.drupal.org/node/2183531">The Variable API has been removed</a></li>
+              </ul>
+      
+            <h5>Files Affected</h5>
+      <ul>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 753</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 754</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 755</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesEditForm.php, line 182</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesEditForm.php, line 194</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesEditForm.php, line 221</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesEditForm.php, line 233</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesEditForm.php, line 268</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesEditForm.php, line 271</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesEditForm.php, line 530</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesEditForm.php, line 531</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesEditForm.php, line 532</li>
+              <li>modules/custom/r_textbook_companion/src/CodeApprovalForm.php, line 167</li>
+              <li>modules/custom/r_textbook_companion/src/CodeApprovalForm.php, line 168</li>
+              <li>modules/custom/r_textbook_companion/src/CodeApprovalForm.php, line 169</li>
+              <li>modules/custom/r_textbook_companion/src/CodeApprovalForm.php, line 190</li>
+              <li>modules/custom/r_textbook_companion/src/CodeApprovalForm.php, line 191</li>
+              <li>modules/custom/r_textbook_companion/src/CodeApprovalForm.php, line 192</li>
+              <li>modules/custom/r_textbook_companion/src/TextbookCompanionSettingsForm.php, line 21</li>
+              <li>modules/custom/r_textbook_companion/src/TextbookCompanionSettingsForm.php, line 30</li>
+              <li>modules/custom/r_textbook_companion/src/TextbookCompanionSettingsForm.php, line 39</li>
+              <li>modules/custom/r_textbook_companion/src/TextbookCompanionSettingsForm.php, line 48</li>
+              <li>modules/custom/r_textbook_companion/src/TextbookCompanionSettingsForm.php, line 57</li>
+              <li>modules/custom/r_textbook_companion/src/TextbookCompanionSettingsForm.php, line 66</li>
+              <li>modules/custom/r_textbook_companion/src/TextbookCompanionSettingsForm.php, line 75</li>
+              <li>modules/custom/r_textbook_companion/src/TextbookCompanionSettingsForm.php, line 88</li>
+              <li>modules/custom/r_textbook_companion/src/Form/TextbookCompanionSettingsForm.php, line 31</li>
+              <li>modules/custom/r_textbook_companion/src/Form/TextbookCompanionSettingsForm.php, line 40</li>
+              <li>modules/custom/r_textbook_companion/src/Form/TextbookCompanionSettingsForm.php, line 49</li>
+              <li>modules/custom/r_textbook_companion/src/Form/TextbookCompanionSettingsForm.php, line 58</li>
+              <li>modules/custom/r_textbook_companion/src/Form/TextbookCompanionSettingsForm.php, line 67</li>
+              <li>modules/custom/r_textbook_companion/src/Form/TextbookCompanionSettingsForm.php, line 76</li>
+              <li>modules/custom/r_textbook_companion/src/Form/TextbookCompanionSettingsForm.php, line 85</li>
+              <li>modules/custom/r_textbook_companion/src/Form/TextbookCompanionSettingsForm.php, line 98</li>
+              <li>modules/custom/r_textbook_companion/src/Form/CodableExamplesApprovalForm.php, line 123</li>
+              <li>modules/custom/r_textbook_companion/src/Form/CodableExamplesApprovalForm.php, line 124</li>
+              <li>modules/custom/r_textbook_companion/src/Form/CodableExamplesApprovalForm.php, line 125</li>
+              <li>modules/custom/r_textbook_companion/src/Form/CodableExamplesApprovalForm.php, line 156</li>
+              <li>modules/custom/r_textbook_companion/src/Form/CodableExamplesApprovalForm.php, line 157</li>
+              <li>modules/custom/r_textbook_companion/src/Form/CodableExamplesApprovalForm.php, line 158</li>
+              <li>modules/custom/r_textbook_companion/src/EditCodeSubmissionForm.php, line 106</li>
+              <li>modules/custom/r_textbook_companion/src/EditCodeSubmissionForm.php, line 107</li>
+              <li>modules/custom/r_textbook_companion/src/EditCodeSubmissionForm.php, line 108</li>
+              <li>modules/custom/r_textbook_companion/src/ChequeStatusForm.php, line 534</li>
+              <li>modules/custom/r_textbook_companion/src/ChequeStatusForm.php, line 573</li>
+              <li>modules/custom/r_textbook_companion/src/ChequeStatusForm.php, line 579</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesAdminEditForm.php, line 160</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesAdminEditForm.php, line 172</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesAdminEditForm.php, line 199</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesAdminEditForm.php, line 211</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesAdminEditForm.php, line 245</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesAdminEditForm.php, line 248</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesAdminEditForm.php, line 495</li>
+              <li>modules/custom/r_textbook_companion/src/Form/PaperSubmissionForm.php, line 114</li>
+              <li>modules/custom/r_textbook_companion/src/Form/PaperSubmissionForm.php, line 120</li>
+              <li>modules/custom/r_textbook_companion/src/Form/PaperSubmissionForm.php, line 136</li>
+              <li>modules/custom/r_textbook_companion/src/Form/PaperSubmissionForm.php, line 142</li>
+              <li>modules/custom/r_textbook_companion/src/Form/PaperSubmissionForm.php, line 158</li>
+              <li>modules/custom/r_textbook_companion/src/Form/PaperSubmissionForm.php, line 164</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 271</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 291</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 321</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 342</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 378</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 401</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 472</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 496</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 532</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 548</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 577</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 593</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 631</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 650</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 686</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 704</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 737</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 755</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 795</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 815</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 827</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 828</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 829</li>
+              <li>modules/custom/r_textbook_companion/src/Form/CodeApprovalForm.php, line 177</li>
+              <li>modules/custom/r_textbook_companion/src/Form/CodeApprovalForm.php, line 178</li>
+              <li>modules/custom/r_textbook_companion/src/Form/CodeApprovalForm.php, line 179</li>
+              <li>modules/custom/r_textbook_companion/src/Form/CodeApprovalForm.php, line 200</li>
+              <li>modules/custom/r_textbook_companion/src/Form/CodeApprovalForm.php, line 201</li>
+              <li>modules/custom/r_textbook_companion/src/Form/CodeApprovalForm.php, line 202</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesEditForm.php, line 192</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesEditForm.php, line 204</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesEditForm.php, line 231</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesEditForm.php, line 243</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesEditForm.php, line 278</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesEditForm.php, line 281</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesEditForm.php, line 540</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesEditForm.php, line 541</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesEditForm.php, line 542</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 261</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 281</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 311</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 332</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 368</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 391</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 462</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 486</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 522</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 538</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 567</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 583</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 621</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 640</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 676</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 694</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 727</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 745</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 785</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 805</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 817</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 818</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 819</li>
+              <li>modules/custom/r_textbook_companion/src/Form/EditCodeSubmissionForm.php, line 116</li>
+              <li>modules/custom/r_textbook_companion/src/Form/EditCodeSubmissionForm.php, line 117</li>
+              <li>modules/custom/r_textbook_companion/src/Form/EditCodeSubmissionForm.php, line 118</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ProposalStatusForm.php, line 315</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ProposalStatusForm.php, line 316</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ProposalStatusForm.php, line 317</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ProposalStatusForm.php, line 353</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ProposalStatusForm.php, line 354</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ProposalStatusForm.php, line 355</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ChequeStatusForm.php, line 544</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ChequeStatusForm.php, line 583</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ChequeStatusForm.php, line 589</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesAdminEditForm.php, line 170</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesAdminEditForm.php, line 182</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesAdminEditForm.php, line 209</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesAdminEditForm.php, line 221</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesAdminEditForm.php, line 255</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesAdminEditForm.php, line 258</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesAdminEditForm.php, line 505</li>
+              <li>modules/custom/r_textbook_companion/src/ProposalApprovalForm.php, line 270</li>
+              <li>modules/custom/r_textbook_companion/src/ProposalApprovalForm.php, line 271</li>
+              <li>modules/custom/r_textbook_companion/src/ProposalApprovalForm.php, line 272</li>
+              <li>modules/custom/r_textbook_companion/src/ProposalApprovalForm.php, line 327</li>
+              <li>modules/custom/r_textbook_companion/src/ProposalApprovalForm.php, line 328</li>
+              <li>modules/custom/r_textbook_companion/src/ProposalApprovalForm.php, line 329</li>
+              <li>modules/custom/r_textbook_companion/src/PaperSubmissionForm.php, line 104</li>
+              <li>modules/custom/r_textbook_companion/src/PaperSubmissionForm.php, line 110</li>
+              <li>modules/custom/r_textbook_companion/src/PaperSubmissionForm.php, line 126</li>
+              <li>modules/custom/r_textbook_companion/src/PaperSubmissionForm.php, line 132</li>
+              <li>modules/custom/r_textbook_companion/src/PaperSubmissionForm.php, line 148</li>
+              <li>modules/custom/r_textbook_companion/src/PaperSubmissionForm.php, line 154</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ProposalApprovalForm.php, line 280</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ProposalApprovalForm.php, line 281</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ProposalApprovalForm.php, line 282</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ProposalApprovalForm.php, line 337</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ProposalApprovalForm.php, line 338</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ProposalApprovalForm.php, line 339</li>
+              <li>modules/custom/r_textbook_companion/src/ProposalStatusForm.php, line 305</li>
+              <li>modules/custom/r_textbook_companion/src/ProposalStatusForm.php, line 306</li>
+              <li>modules/custom/r_textbook_companion/src/ProposalStatusForm.php, line 307</li>
+              <li>modules/custom/r_textbook_companion/src/ProposalStatusForm.php, line 343</li>
+              <li>modules/custom/r_textbook_companion/src/ProposalStatusForm.php, line 344</li>
+              <li>modules/custom/r_textbook_companion/src/ProposalStatusForm.php, line 345</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 759</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 760</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 761</li>
+              <li>modules/custom/r_textbook_companion/src/CodableExamplesApprovalForm.php, line 113</li>
+              <li>modules/custom/r_textbook_companion/src/CodableExamplesApprovalForm.php, line 114</li>
+              <li>modules/custom/r_textbook_companion/src/CodableExamplesApprovalForm.php, line 115</li>
+              <li>modules/custom/r_textbook_companion/src/CodableExamplesApprovalForm.php, line 146</li>
+              <li>modules/custom/r_textbook_companion/src/CodableExamplesApprovalForm.php, line 147</li>
+              <li>modules/custom/r_textbook_companion/src/CodableExamplesApprovalForm.php, line 148</li>
+            </ul>
+                  <aside>Flagged by _function_call:variable_get</aside>    </details>
+    <details class="error">
+      <summary><code>variable_set()</code> has been removed.</summary>
+
+      
+            <h5>Documentation</h5>
+      <ul>
+                <li><a target="_blank" href="https://www.drupal.org/node/2183531">The Variable API has been removed</a></li>
+              </ul>
+      
+            <h5>Files Affected</h5>
+      <ul>
+              <li>modules/custom/r_textbook_companion/src/TextbookCompanionSettingsForm.php, line 102</li>
+              <li>modules/custom/r_textbook_companion/src/TextbookCompanionSettingsForm.php, line 103</li>
+              <li>modules/custom/r_textbook_companion/src/TextbookCompanionSettingsForm.php, line 104</li>
+              <li>modules/custom/r_textbook_companion/src/TextbookCompanionSettingsForm.php, line 105</li>
+              <li>modules/custom/r_textbook_companion/src/TextbookCompanionSettingsForm.php, line 106</li>
+              <li>modules/custom/r_textbook_companion/src/TextbookCompanionSettingsForm.php, line 107</li>
+              <li>modules/custom/r_textbook_companion/src/TextbookCompanionSettingsForm.php, line 108</li>
+              <li>modules/custom/r_textbook_companion/src/TextbookCompanionSettingsForm.php, line 109</li>
+              <li>modules/custom/r_textbook_companion/src/Form/TextbookCompanionSettingsForm.php, line 112</li>
+              <li>modules/custom/r_textbook_companion/src/Form/TextbookCompanionSettingsForm.php, line 113</li>
+              <li>modules/custom/r_textbook_companion/src/Form/TextbookCompanionSettingsForm.php, line 114</li>
+              <li>modules/custom/r_textbook_companion/src/Form/TextbookCompanionSettingsForm.php, line 115</li>
+              <li>modules/custom/r_textbook_companion/src/Form/TextbookCompanionSettingsForm.php, line 116</li>
+              <li>modules/custom/r_textbook_companion/src/Form/TextbookCompanionSettingsForm.php, line 117</li>
+              <li>modules/custom/r_textbook_companion/src/Form/TextbookCompanionSettingsForm.php, line 118</li>
+              <li>modules/custom/r_textbook_companion/src/Form/TextbookCompanionSettingsForm.php, line 119</li>
+            </ul>
+                  <aside>Flagged by _function_call:variable_set</aside>    </details>
+    <details class="error">
+      <summary><code>drupal_set_message()</code> has been removed.</summary>
+
+      
+            <h5>Documentation</h5>
+      <ul>
+                <li><a target="_blank" href="https://www.drupal.org/node/2774931"><code>drupal_set_message()</code> moved into stream wrapper manager service.</a></li>
+              </ul>
+      
+            <h5>Files Affected</h5>
+      <ul>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 21</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 37</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 42</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 47</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 50</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 53</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 130</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 135</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 140</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 143</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 146</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 182</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 304</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 379</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 470</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 512</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 553</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 581</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 587</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 592</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 597</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 602</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 620</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 625</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 660</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 697</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 702</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 715</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 728</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 742</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 748</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 771</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 775</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 794</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 800</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 805</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 810</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 815</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 831</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 853</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 1194</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 1278</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 1359</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 1439</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 1527</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 1535</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 1619</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 1731</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 1752</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 1800</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 1844</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 1849</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 1854</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 1857</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 1860</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 1865</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesEditForm.php, line 26</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesEditForm.php, line 31</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesEditForm.php, line 76</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesEditForm.php, line 89</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesEditForm.php, line 94</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesEditForm.php, line 107</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesEditForm.php, line 112</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesEditForm.php, line 305</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesEditForm.php, line 310</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesEditForm.php, line 323</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesEditForm.php, line 336</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesEditForm.php, line 341</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesEditForm.php, line 354</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesEditForm.php, line 359</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesEditForm.php, line 405</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesEditForm.php, line 410</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesEditForm.php, line 423</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesEditForm.php, line 428</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesEditForm.php, line 436</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesEditForm.php, line 445</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesEditForm.php, line 467</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesEditForm.php, line 488</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesEditForm.php, line 491</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesEditForm.php, line 496</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesEditForm.php, line 517</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesEditForm.php, line 520</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesEditForm.php, line 527</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesEditForm.php, line 545</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesEditForm.php, line 547</li>
+              <li>modules/custom/r_textbook_companion/src/EditChapterTitleForm.php, line 26</li>
+              <li>modules/custom/r_textbook_companion/src/EditChapterTitleForm.php, line 32</li>
+              <li>modules/custom/r_textbook_companion/src/EditChapterTitleForm.php, line 37</li>
+              <li>modules/custom/r_textbook_companion/src/EditChapterTitleForm.php, line 42</li>
+              <li>modules/custom/r_textbook_companion/src/EditChapterTitleForm.php, line 47</li>
+              <li>modules/custom/r_textbook_companion/src/EditChapterTitleForm.php, line 63</li>
+              <li>modules/custom/r_textbook_companion/src/EditChapterTitleForm.php, line 78</li>
+              <li>modules/custom/r_textbook_companion/src/EditChapterTitleForm.php, line 136</li>
+              <li>modules/custom/r_textbook_companion/src/EditChapterTitleForm.php, line 142</li>
+              <li>modules/custom/r_textbook_companion/src/EditChapterTitleForm.php, line 147</li>
+              <li>modules/custom/r_textbook_companion/src/EditChapterTitleForm.php, line 152</li>
+              <li>modules/custom/r_textbook_companion/src/EditChapterTitleForm.php, line 157</li>
+              <li>modules/custom/r_textbook_companion/src/EditChapterTitleForm.php, line 173</li>
+              <li>modules/custom/r_textbook_companion/src/EditChapterTitleForm.php, line 188</li>
+              <li>modules/custom/r_textbook_companion/src/EditChapterTitleForm.php, line 197</li>
+              <li>modules/custom/r_textbook_companion/src/CodeApprovalForm.php, line 40</li>
+              <li>modules/custom/r_textbook_companion/src/CodeApprovalForm.php, line 182</li>
+              <li>modules/custom/r_textbook_companion/src/CodeApprovalForm.php, line 209</li>
+              <li>modules/custom/r_textbook_companion/src/CodeApprovalForm.php, line 213</li>
+              <li>modules/custom/r_textbook_companion/src/CodeApprovalForm.php, line 218</li>
+              <li>modules/custom/r_textbook_companion/src/Form/TextbookCompanionSearchForm.php, line 82</li>
+              <li>modules/custom/r_textbook_companion/src/TextbookCompanionSettingsForm.php, line 110</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ChequeContctForm.php, line 259</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ChequeContctForm.php, line 262</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ChequeContctForm.php, line 265</li>
+              <li>modules/custom/r_textbook_companion/src/Form/TextbookCompanionSettingsForm.php, line 120</li>
+              <li>modules/custom/r_textbook_companion/src/Form/GeneratePdf.php, line 54</li>
+              <li>modules/custom/r_textbook_companion/src/GeneratePdf.php, line 44</li>
+              <li>modules/custom/r_textbook_companion/src/Form/CodableExamplesApprovalForm.php, line 138</li>
+              <li>modules/custom/r_textbook_companion/src/Form/CodableExamplesApprovalForm.php, line 140</li>
+              <li>modules/custom/r_textbook_companion/src/Form/CodableExamplesApprovalForm.php, line 172</li>
+              <li>modules/custom/r_textbook_companion/src/Form/CodableExamplesApprovalForm.php, line 174</li>
+              <li>modules/custom/r_textbook_companion/src/Form/CodableExamplesApprovalForm.php, line 178</li>
+              <li>modules/custom/r_textbook_companion/src/EditCodeSubmissionForm.php, line 23</li>
+              <li>modules/custom/r_textbook_companion/src/EditCodeSubmissionForm.php, line 121</li>
+              <li>modules/custom/r_textbook_companion/src/EditCodeSubmissionForm.php, line 123</li>
+              <li>modules/custom/r_textbook_companion/src/ChequeStatusForm.php, line 34</li>
+              <li>modules/custom/r_textbook_companion/src/ChequeStatusForm.php, line 461</li>
+              <li>modules/custom/r_textbook_companion/src/ChequeStatusForm.php, line 535</li>
+              <li>modules/custom/r_textbook_companion/src/ChequeStatusForm.php, line 537</li>
+              <li>modules/custom/r_textbook_companion/src/ChequeStatusForm.php, line 554</li>
+              <li>modules/custom/r_textbook_companion/src/ChequeStatusForm.php, line 574</li>
+              <li>modules/custom/r_textbook_companion/src/ChequeStatusForm.php, line 576</li>
+              <li>modules/custom/r_textbook_companion/src/ChequeStatusForm.php, line 580</li>
+              <li>modules/custom/r_textbook_companion/src/ChequeStatusForm.php, line 582</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesAdminEditForm.php, line 26</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesAdminEditForm.php, line 67</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesAdminEditForm.php, line 80</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesAdminEditForm.php, line 93</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesAdminEditForm.php, line 282</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesAdminEditForm.php, line 295</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesAdminEditForm.php, line 308</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesAdminEditForm.php, line 321</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesAdminEditForm.php, line 368</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesAdminEditForm.php, line 373</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesAdminEditForm.php, line 386</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesAdminEditForm.php, line 391</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesAdminEditForm.php, line 399</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesAdminEditForm.php, line 408</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesAdminEditForm.php, line 430</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesAdminEditForm.php, line 451</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesAdminEditForm.php, line 454</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesAdminEditForm.php, line 459</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesAdminEditForm.php, line 480</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesAdminEditForm.php, line 483</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesAdminEditForm.php, line 490</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesAdminEditForm.php, line 496</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesAdminEditForm.php, line 498</li>
+              <li>modules/custom/r_textbook_companion/src/ProposalEditForm.php, line 521</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ProposalEditForm.php, line 531</li>
+              <li>modules/custom/r_textbook_companion/src/Form/PaperSubmissionForm.php, line 115</li>
+              <li>modules/custom/r_textbook_companion/src/Form/PaperSubmissionForm.php, line 117</li>
+              <li>modules/custom/r_textbook_companion/src/Form/PaperSubmissionForm.php, line 121</li>
+              <li>modules/custom/r_textbook_companion/src/Form/PaperSubmissionForm.php, line 123</li>
+              <li>modules/custom/r_textbook_companion/src/Form/PaperSubmissionForm.php, line 137</li>
+              <li>modules/custom/r_textbook_companion/src/Form/PaperSubmissionForm.php, line 139</li>
+              <li>modules/custom/r_textbook_companion/src/Form/PaperSubmissionForm.php, line 143</li>
+              <li>modules/custom/r_textbook_companion/src/Form/PaperSubmissionForm.php, line 145</li>
+              <li>modules/custom/r_textbook_companion/src/Form/PaperSubmissionForm.php, line 159</li>
+              <li>modules/custom/r_textbook_companion/src/Form/PaperSubmissionForm.php, line 161</li>
+              <li>modules/custom/r_textbook_companion/src/Form/PaperSubmissionForm.php, line 165</li>
+              <li>modules/custom/r_textbook_companion/src/Form/PaperSubmissionForm.php, line 167</li>
+              <li>modules/custom/r_textbook_companion/src/Form/PaperSubmissionForm.php, line 170</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 266</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 316</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 350</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 360</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 364</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 367</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 409</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 419</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 435</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 440</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 445</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 465</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 502</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 527</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 571</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 613</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 617</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 621</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 624</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 681</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 732</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 763</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 784</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 787</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 821</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 842</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 847</li>
+              <li>modules/custom/r_textbook_companion/src/Form/CodeApprovalForm.php, line 50</li>
+              <li>modules/custom/r_textbook_companion/src/Form/CodeApprovalForm.php, line 192</li>
+              <li>modules/custom/r_textbook_companion/src/Form/CodeApprovalForm.php, line 219</li>
+              <li>modules/custom/r_textbook_companion/src/Form/CodeApprovalForm.php, line 223</li>
+              <li>modules/custom/r_textbook_companion/src/Form/CodeApprovalForm.php, line 228</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesEditForm.php, line 36</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesEditForm.php, line 41</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesEditForm.php, line 86</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesEditForm.php, line 99</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesEditForm.php, line 104</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesEditForm.php, line 117</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesEditForm.php, line 122</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesEditForm.php, line 315</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesEditForm.php, line 320</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesEditForm.php, line 333</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesEditForm.php, line 346</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesEditForm.php, line 351</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesEditForm.php, line 364</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesEditForm.php, line 369</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesEditForm.php, line 415</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesEditForm.php, line 420</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesEditForm.php, line 433</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesEditForm.php, line 438</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesEditForm.php, line 446</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesEditForm.php, line 455</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesEditForm.php, line 477</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesEditForm.php, line 498</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesEditForm.php, line 501</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesEditForm.php, line 506</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesEditForm.php, line 527</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesEditForm.php, line 530</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesEditForm.php, line 537</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesEditForm.php, line 555</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesEditForm.php, line 557</li>
+              <li>modules/custom/r_textbook_companion/src/ContactDetails.php, line 16</li>
+              <li>modules/custom/r_textbook_companion/src/ContactDetails.php, line 31</li>
+              <li>modules/custom/r_textbook_companion/src/ContactDetails.php, line 45</li>
+              <li>modules/custom/r_textbook_companion/src/ContactDetails.php, line 333</li>
+              <li>modules/custom/r_textbook_companion/src/BookNotesForm.php, line 28</li>
+              <li>modules/custom/r_textbook_companion/src/BookNotesForm.php, line 34</li>
+              <li>modules/custom/r_textbook_companion/src/BookNotesForm.php, line 87</li>
+              <li>modules/custom/r_textbook_companion/src/BookNotesForm.php, line 93</li>
+              <li>modules/custom/r_textbook_companion/src/BookNotesForm.php, line 113</li>
+              <li>modules/custom/r_textbook_companion/src/BookNotesForm.php, line 124</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 256</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 306</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 340</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 350</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 354</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 357</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 399</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 409</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 425</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 430</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 435</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 455</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 492</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 517</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 561</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 603</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 607</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 611</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 614</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 671</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 722</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 753</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 774</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 777</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 811</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 832</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 837</li>
+              <li>modules/custom/r_textbook_companion/src/TextbookCompanionSearchForm.php, line 72</li>
+              <li>modules/custom/r_textbook_companion/src/Form/EditCodeSubmissionForm.php, line 33</li>
+              <li>modules/custom/r_textbook_companion/src/Form/EditCodeSubmissionForm.php, line 131</li>
+              <li>modules/custom/r_textbook_companion/src/Form/EditCodeSubmissionForm.php, line 133</li>
+              <li>modules/custom/r_textbook_companion/src/Form/EditChapterTitleForm.php, line 36</li>
+              <li>modules/custom/r_textbook_companion/src/Form/EditChapterTitleForm.php, line 42</li>
+              <li>modules/custom/r_textbook_companion/src/Form/EditChapterTitleForm.php, line 47</li>
+              <li>modules/custom/r_textbook_companion/src/Form/EditChapterTitleForm.php, line 52</li>
+              <li>modules/custom/r_textbook_companion/src/Form/EditChapterTitleForm.php, line 57</li>
+              <li>modules/custom/r_textbook_companion/src/Form/EditChapterTitleForm.php, line 73</li>
+              <li>modules/custom/r_textbook_companion/src/Form/EditChapterTitleForm.php, line 88</li>
+              <li>modules/custom/r_textbook_companion/src/Form/EditChapterTitleForm.php, line 146</li>
+              <li>modules/custom/r_textbook_companion/src/Form/EditChapterTitleForm.php, line 152</li>
+              <li>modules/custom/r_textbook_companion/src/Form/EditChapterTitleForm.php, line 157</li>
+              <li>modules/custom/r_textbook_companion/src/Form/EditChapterTitleForm.php, line 162</li>
+              <li>modules/custom/r_textbook_companion/src/Form/EditChapterTitleForm.php, line 167</li>
+              <li>modules/custom/r_textbook_companion/src/Form/EditChapterTitleForm.php, line 183</li>
+              <li>modules/custom/r_textbook_companion/src/Form/EditChapterTitleForm.php, line 198</li>
+              <li>modules/custom/r_textbook_companion/src/Form/EditChapterTitleForm.php, line 207</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ProposalStatusForm.php, line 33</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ProposalStatusForm.php, line 294</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ProposalStatusForm.php, line 332</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ProposalStatusForm.php, line 334</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ProposalStatusForm.php, line 368</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ProposalStatusForm.php, line 370</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ProposalStatusForm.php, line 373</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BookNotesForm.php, line 38</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BookNotesForm.php, line 44</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BookNotesForm.php, line 97</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BookNotesForm.php, line 103</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BookNotesForm.php, line 123</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BookNotesForm.php, line 134</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ChequeStatusForm.php, line 44</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ChequeStatusForm.php, line 471</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ChequeStatusForm.php, line 545</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ChequeStatusForm.php, line 547</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ChequeStatusForm.php, line 564</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ChequeStatusForm.php, line 584</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ChequeStatusForm.php, line 586</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ChequeStatusForm.php, line 590</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ChequeStatusForm.php, line 592</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ContactDetails.php, line 26</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ContactDetails.php, line 41</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ContactDetails.php, line 55</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ContactDetails.php, line 343</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesAdminEditForm.php, line 36</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesAdminEditForm.php, line 77</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesAdminEditForm.php, line 90</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesAdminEditForm.php, line 103</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesAdminEditForm.php, line 292</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesAdminEditForm.php, line 305</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesAdminEditForm.php, line 318</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesAdminEditForm.php, line 331</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesAdminEditForm.php, line 378</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesAdminEditForm.php, line 383</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesAdminEditForm.php, line 396</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesAdminEditForm.php, line 401</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesAdminEditForm.php, line 409</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesAdminEditForm.php, line 418</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesAdminEditForm.php, line 440</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesAdminEditForm.php, line 461</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesAdminEditForm.php, line 464</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesAdminEditForm.php, line 469</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesAdminEditForm.php, line 490</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesAdminEditForm.php, line 493</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesAdminEditForm.php, line 500</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesAdminEditForm.php, line 506</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesAdminEditForm.php, line 508</li>
+              <li>modules/custom/r_textbook_companion/src/ProposalApprovalForm.php, line 28</li>
+              <li>modules/custom/r_textbook_companion/src/ProposalApprovalForm.php, line 34</li>
+              <li>modules/custom/r_textbook_companion/src/ProposalApprovalForm.php, line 239</li>
+              <li>modules/custom/r_textbook_companion/src/ProposalApprovalForm.php, line 245</li>
+              <li>modules/custom/r_textbook_companion/src/ProposalApprovalForm.php, line 285</li>
+              <li>modules/custom/r_textbook_companion/src/ProposalApprovalForm.php, line 287</li>
+              <li>modules/custom/r_textbook_companion/src/ProposalApprovalForm.php, line 343</li>
+              <li>modules/custom/r_textbook_companion/src/ProposalApprovalForm.php, line 345</li>
+              <li>modules/custom/r_textbook_companion/src/PaperSubmissionForm.php, line 105</li>
+              <li>modules/custom/r_textbook_companion/src/PaperSubmissionForm.php, line 107</li>
+              <li>modules/custom/r_textbook_companion/src/PaperSubmissionForm.php, line 111</li>
+              <li>modules/custom/r_textbook_companion/src/PaperSubmissionForm.php, line 113</li>
+              <li>modules/custom/r_textbook_companion/src/PaperSubmissionForm.php, line 127</li>
+              <li>modules/custom/r_textbook_companion/src/PaperSubmissionForm.php, line 129</li>
+              <li>modules/custom/r_textbook_companion/src/PaperSubmissionForm.php, line 133</li>
+              <li>modules/custom/r_textbook_companion/src/PaperSubmissionForm.php, line 135</li>
+              <li>modules/custom/r_textbook_companion/src/PaperSubmissionForm.php, line 149</li>
+              <li>modules/custom/r_textbook_companion/src/PaperSubmissionForm.php, line 151</li>
+              <li>modules/custom/r_textbook_companion/src/PaperSubmissionForm.php, line 155</li>
+              <li>modules/custom/r_textbook_companion/src/PaperSubmissionForm.php, line 157</li>
+              <li>modules/custom/r_textbook_companion/src/PaperSubmissionForm.php, line 160</li>
+              <li>modules/custom/r_textbook_companion/src/ChequeContctForm.php, line 249</li>
+              <li>modules/custom/r_textbook_companion/src/ChequeContctForm.php, line 252</li>
+              <li>modules/custom/r_textbook_companion/src/ChequeContctForm.php, line 255</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ProposalApprovalForm.php, line 38</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ProposalApprovalForm.php, line 44</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ProposalApprovalForm.php, line 249</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ProposalApprovalForm.php, line 255</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ProposalApprovalForm.php, line 295</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ProposalApprovalForm.php, line 297</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ProposalApprovalForm.php, line 353</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ProposalApprovalForm.php, line 355</li>
+              <li>modules/custom/r_textbook_companion/src/ProposalStatusForm.php, line 23</li>
+              <li>modules/custom/r_textbook_companion/src/ProposalStatusForm.php, line 284</li>
+              <li>modules/custom/r_textbook_companion/src/ProposalStatusForm.php, line 322</li>
+              <li>modules/custom/r_textbook_companion/src/ProposalStatusForm.php, line 324</li>
+              <li>modules/custom/r_textbook_companion/src/ProposalStatusForm.php, line 358</li>
+              <li>modules/custom/r_textbook_companion/src/ProposalStatusForm.php, line 360</li>
+              <li>modules/custom/r_textbook_companion/src/ProposalStatusForm.php, line 363</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 27</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 43</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 48</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 53</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 56</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 59</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 136</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 141</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 146</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 149</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 152</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 188</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 310</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 385</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 476</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 518</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 559</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 587</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 593</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 598</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 603</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 608</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 626</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 631</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 666</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 703</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 708</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 721</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 734</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 748</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 754</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 777</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 781</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 800</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 806</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 811</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 816</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 821</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 837</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 859</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 1200</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 1284</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 1365</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 1445</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 1533</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 1541</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 1625</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 1737</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 1758</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 1806</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 1850</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 1855</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 1860</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 1863</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 1866</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 1871</li>
+              <li>modules/custom/r_textbook_companion/src/CodableExamplesApprovalForm.php, line 128</li>
+              <li>modules/custom/r_textbook_companion/src/CodableExamplesApprovalForm.php, line 130</li>
+              <li>modules/custom/r_textbook_companion/src/CodableExamplesApprovalForm.php, line 162</li>
+              <li>modules/custom/r_textbook_companion/src/CodableExamplesApprovalForm.php, line 164</li>
+              <li>modules/custom/r_textbook_companion/src/CodableExamplesApprovalForm.php, line 168</li>
+            </ul>
+                  <aside>Flagged by _function_call:drupal_set_message</aside>    </details>
+    <details class="error">
+      <summary><code>db_delete()</code> has been removed.</summary>
+
+      
+            <h5>Documentation</h5>
+      <ul>
+                <li><a target="_blank" href="https://www.drupal.org/node/2993033"><code>db_delete()</code> is deprecated.</a></li>
+              </ul>
+      
+            <h5>Files Affected</h5>
+      <ul>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 458</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 462</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 448</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 452</li>
+            </ul>
+                  <aside>Flagged by _function_call:db_delete</aside>    </details>
+    <details class="error">
+      <summary><code>db_query()</code> has been removed.</summary>
+
+      
+            <h5>Documentation</h5>
+      <ul>
+                <li><a target="_blank" href="https://www.drupal.org/node/2993033"><code>db_query()</code> is deprecated.</a></li>
+              </ul>
+      
+            <h5>Files Affected</h5>
+      <ul>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 1115</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 1167</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 1259</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 1411</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 1482</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 1503</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 1768</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesEditForm.php, line 485</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesEditForm.php, line 514</li>
+              <li>modules/custom/r_textbook_companion/src/Form/GeneratePdf.php, line 45</li>
+              <li>modules/custom/r_textbook_companion/src/Form/GeneratePdf.php, line 142</li>
+              <li>modules/custom/r_textbook_companion/src/GeneratePdf.php, line 35</li>
+              <li>modules/custom/r_textbook_companion/src/GeneratePdf.php, line 132</li>
+              <li>modules/custom/r_textbook_companion/src/EditCodeSubmissionForm.php, line 89</li>
+              <li>modules/custom/r_textbook_companion/src/EditCodeSubmissionForm.php, line 96</li>
+              <li>modules/custom/r_textbook_companion/src/ChequeStatusForm.php, line 54</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesAdminEditForm.php, line 448</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesAdminEditForm.php, line 477</li>
+              <li>modules/custom/r_textbook_companion/src/Form/PaperSubmissionForm.php, line 49</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesEditForm.php, line 495</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesEditForm.php, line 524</li>
+              <li>modules/custom/r_textbook_companion/src/ContactDetails.php, line 102</li>
+              <li>modules/custom/r_textbook_companion/src/BookNotesForm.php, line 123</li>
+              <li>modules/custom/r_textbook_companion/src/Form/EditCodeSubmissionForm.php, line 99</li>
+              <li>modules/custom/r_textbook_companion/src/Form/EditCodeSubmissionForm.php, line 106</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BookNotesForm.php, line 133</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ChequeStatusForm.php, line 64</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ContactDetails.php, line 112</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesAdminEditForm.php, line 458</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesAdminEditForm.php, line 487</li>
+              <li>modules/custom/r_textbook_companion/src/PaperSubmissionForm.php, line 39</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 1121</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 1173</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 1265</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 1417</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 1488</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 1509</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 1774</li>
+            </ul>
+                  <aside>Flagged by _function_call:db_query</aside>    </details>
+    <details class="error">
+      <summary><code>db_select()</code> has been removed.</summary>
+
+      
+            <h5>Documentation</h5>
+      <ul>
+                <li><a target="_blank" href="https://www.drupal.org/node/2993033"><code>db_select()</code> is deprecated.</a></li>
+              </ul>
+      
+            <h5>Files Affected</h5>
+      <ul>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 27</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 75</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 120</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 167</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 211</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 219</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 229</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 334</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 391</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 414</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 455</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 478</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 495</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 530</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 538</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 573</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 612</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 637</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 646</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 690</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 708</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 721</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 734</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 786</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 823</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 839</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 860</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 881</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 957</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 995</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 1065</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 1129</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 1150</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 1157</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 1202</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 1208</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 1231</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 1247</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 1290</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 1307</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 1314</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 1322</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 1372</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 1385</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 1393</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 1403</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 1452</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 1467</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 1474</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 1495</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 1546</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 1564</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 1578</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 1602</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 1669</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 1683</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 1694</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 1758</li>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 1834</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesEditForm.php, line 19</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesEditForm.php, line 49</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesEditForm.php, line 70</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesEditForm.php, line 83</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesEditForm.php, line 101</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesEditForm.php, line 298</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesEditForm.php, line 317</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesEditForm.php, line 330</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesEditForm.php, line 348</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesEditForm.php, line 398</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesEditForm.php, line 416</li>
+              <li>modules/custom/r_textbook_companion/src/EditChapterTitleForm.php, line 18</li>
+              <li>modules/custom/r_textbook_companion/src/EditChapterTitleForm.php, line 55</li>
+              <li>modules/custom/r_textbook_companion/src/EditChapterTitleForm.php, line 71</li>
+              <li>modules/custom/r_textbook_companion/src/EditChapterTitleForm.php, line 128</li>
+              <li>modules/custom/r_textbook_companion/src/EditChapterTitleForm.php, line 165</li>
+              <li>modules/custom/r_textbook_companion/src/EditChapterTitleForm.php, line 181</li>
+              <li>modules/custom/r_textbook_companion/src/CodeApprovalForm.php, line 17</li>
+              <li>modules/custom/r_textbook_companion/src/CodeApprovalForm.php, line 25</li>
+              <li>modules/custom/r_textbook_companion/src/CodeApprovalForm.php, line 33</li>
+              <li>modules/custom/r_textbook_companion/src/CodeApprovalForm.php, line 71</li>
+              <li>modules/custom/r_textbook_companion/src/CodeApprovalForm.php, line 126</li>
+              <li>modules/custom/r_textbook_companion/src/CodeApprovalForm.php, line 133</li>
+              <li>modules/custom/r_textbook_companion/src/CodeApprovalForm.php, line 140</li>
+              <li>modules/custom/r_textbook_companion/src/CodeApprovalForm.php, line 147</li>
+              <li>modules/custom/r_textbook_companion/src/Form/TextbookCompanionSearchForm.php, line 54</li>
+              <li>modules/custom/r_textbook_companion/src/Form/TextbookCompanionSearchForm.php, line 66</li>
+              <li>modules/custom/r_textbook_companion/src/Form/TextbookCompanionSearchForm.php, line 75</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ChequeContctForm.php, line 28</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ChequeContctForm.php, line 64</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ChequeContctForm.php, line 109</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ChequeContctForm.php, line 156</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ChequeContctForm.php, line 170</li>
+              <li>modules/custom/r_textbook_companion/src/ChequeReportForm.php, line 16</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ChequeReportForm.php, line 26</li>
+              <li>modules/custom/r_textbook_companion/src/Form/GeneratePdf.php, line 32</li>
+              <li>modules/custom/r_textbook_companion/src/Form/GeneratePdf.php, line 40</li>
+              <li>modules/custom/r_textbook_companion/src/Form/GeneratePdf.php, line 123</li>
+              <li>modules/custom/r_textbook_companion/src/GeneratePdf.php, line 22</li>
+              <li>modules/custom/r_textbook_companion/src/GeneratePdf.php, line 30</li>
+              <li>modules/custom/r_textbook_companion/src/GeneratePdf.php, line 113</li>
+              <li>modules/custom/r_textbook_companion/src/Form/CodableExamplesApprovalForm.php, line 27</li>
+              <li>modules/custom/r_textbook_companion/src/Form/CodableExamplesApprovalForm.php, line 36</li>
+              <li>modules/custom/r_textbook_companion/src/Form/CodableExamplesApprovalForm.php, line 56</li>
+              <li>modules/custom/r_textbook_companion/src/Form/CodableExamplesApprovalForm.php, line 103</li>
+              <li>modules/custom/r_textbook_companion/src/Form/CodableExamplesApprovalForm.php, line 108</li>
+              <li>modules/custom/r_textbook_companion/src/EditCodeSubmissionForm.php, line 18</li>
+              <li>modules/custom/r_textbook_companion/src/EditCodeSubmissionForm.php, line 98</li>
+              <li>modules/custom/r_textbook_companion/src/ChequeStatusForm.php, line 20</li>
+              <li>modules/custom/r_textbook_companion/src/ChequeStatusForm.php, line 26</li>
+              <li>modules/custom/r_textbook_companion/src/ChequeStatusForm.php, line 44</li>
+              <li>modules/custom/r_textbook_companion/src/ChequeStatusForm.php, line 88</li>
+              <li>modules/custom/r_textbook_companion/src/ChequeStatusForm.php, line 98</li>
+              <li>modules/custom/r_textbook_companion/src/ChequeStatusForm.php, line 130</li>
+              <li>modules/custom/r_textbook_companion/src/ChequeStatusForm.php, line 216</li>
+              <li>modules/custom/r_textbook_companion/src/ChequeStatusForm.php, line 454</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesAdminEditForm.php, line 19</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesAdminEditForm.php, line 42</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesAdminEditForm.php, line 61</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesAdminEditForm.php, line 74</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesAdminEditForm.php, line 87</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesAdminEditForm.php, line 275</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesAdminEditForm.php, line 289</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesAdminEditForm.php, line 302</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesAdminEditForm.php, line 315</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesAdminEditForm.php, line 361</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesAdminEditForm.php, line 379</li>
+              <li>modules/custom/r_textbook_companion/src/ProposalEditForm.php, line 18</li>
+              <li>modules/custom/r_textbook_companion/src/ProposalEditForm.php, line 35</li>
+              <li>modules/custom/r_textbook_companion/src/ProposalEditForm.php, line 496</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ProposalEditForm.php, line 28</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ProposalEditForm.php, line 45</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ProposalEditForm.php, line 506</li>
+              <li>modules/custom/r_textbook_companion/src/Form/PaperSubmissionForm.php, line 31</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 225</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 231</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 241</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 247</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 298</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 305</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 353</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 412</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 451</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 507</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 513</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 555</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 561</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 599</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 605</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 657</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 663</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 669</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 711</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 717</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 723</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 766</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 772</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 778</li>
+              <li>modules/custom/r_textbook_companion/src/Form/CodeApprovalForm.php, line 27</li>
+              <li>modules/custom/r_textbook_companion/src/Form/CodeApprovalForm.php, line 35</li>
+              <li>modules/custom/r_textbook_companion/src/Form/CodeApprovalForm.php, line 43</li>
+              <li>modules/custom/r_textbook_companion/src/Form/CodeApprovalForm.php, line 81</li>
+              <li>modules/custom/r_textbook_companion/src/Form/CodeApprovalForm.php, line 136</li>
+              <li>modules/custom/r_textbook_companion/src/Form/CodeApprovalForm.php, line 143</li>
+              <li>modules/custom/r_textbook_companion/src/Form/CodeApprovalForm.php, line 150</li>
+              <li>modules/custom/r_textbook_companion/src/Form/CodeApprovalForm.php, line 157</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesEditForm.php, line 29</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesEditForm.php, line 59</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesEditForm.php, line 80</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesEditForm.php, line 93</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesEditForm.php, line 111</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesEditForm.php, line 308</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesEditForm.php, line 327</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesEditForm.php, line 340</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesEditForm.php, line 358</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesEditForm.php, line 408</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesEditForm.php, line 426</li>
+              <li>modules/custom/r_textbook_companion/src/ContactDetails.php, line 23</li>
+              <li>modules/custom/r_textbook_companion/src/ContactDetails.php, line 37</li>
+              <li>modules/custom/r_textbook_companion/src/ContactDetails.php, line 54</li>
+              <li>modules/custom/r_textbook_companion/src/ContactDetails.php, line 65</li>
+              <li>modules/custom/r_textbook_companion/src/ContactDetails.php, line 146</li>
+              <li>modules/custom/r_textbook_companion/src/ContactDetails.php, line 156</li>
+              <li>modules/custom/r_textbook_companion/src/ContactDetails.php, line 296</li>
+              <li>modules/custom/r_textbook_companion/src/BookNotesForm.php, line 19</li>
+              <li>modules/custom/r_textbook_companion/src/BookNotesForm.php, line 41</li>
+              <li>modules/custom/r_textbook_companion/src/BookNotesForm.php, line 78</li>
+              <li>modules/custom/r_textbook_companion/src/BookNotesForm.php, line 100</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 215</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 221</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 231</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 237</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 288</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 295</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 343</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 402</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 441</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 497</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 503</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 545</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 551</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 589</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 595</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 647</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 653</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 659</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 701</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 707</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 713</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 756</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 762</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 768</li>
+              <li>modules/custom/r_textbook_companion/src/TextbookCompanionRunForm.php, line 17</li>
+              <li>modules/custom/r_textbook_companion/src/Form/TextbookCompanionRunForm.php, line 27</li>
+              <li>modules/custom/r_textbook_companion/src/TextbookCompanionSearchForm.php, line 44</li>
+              <li>modules/custom/r_textbook_companion/src/TextbookCompanionSearchForm.php, line 56</li>
+              <li>modules/custom/r_textbook_companion/src/TextbookCompanionSearchForm.php, line 65</li>
+              <li>modules/custom/r_textbook_companion/src/Form/EditCodeSubmissionForm.php, line 28</li>
+              <li>modules/custom/r_textbook_companion/src/Form/EditCodeSubmissionForm.php, line 108</li>
+              <li>modules/custom/r_textbook_companion/src/Form/EditChapterTitleForm.php, line 28</li>
+              <li>modules/custom/r_textbook_companion/src/Form/EditChapterTitleForm.php, line 65</li>
+              <li>modules/custom/r_textbook_companion/src/Form/EditChapterTitleForm.php, line 81</li>
+              <li>modules/custom/r_textbook_companion/src/Form/EditChapterTitleForm.php, line 138</li>
+              <li>modules/custom/r_textbook_companion/src/Form/EditChapterTitleForm.php, line 175</li>
+              <li>modules/custom/r_textbook_companion/src/Form/EditChapterTitleForm.php, line 191</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ProposalStatusForm.php, line 28</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ProposalStatusForm.php, line 152</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ProposalStatusForm.php, line 217</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ProposalStatusForm.php, line 289</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ProposalStatusForm.php, line 300</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BookNotesForm.php, line 29</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BookNotesForm.php, line 51</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BookNotesForm.php, line 88</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BookNotesForm.php, line 110</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ChequeStatusForm.php, line 30</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ChequeStatusForm.php, line 36</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ChequeStatusForm.php, line 54</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ChequeStatusForm.php, line 98</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ChequeStatusForm.php, line 108</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ChequeStatusForm.php, line 140</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ChequeStatusForm.php, line 226</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ChequeStatusForm.php, line 464</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ContactDetails.php, line 33</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ContactDetails.php, line 47</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ContactDetails.php, line 64</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ContactDetails.php, line 75</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ContactDetails.php, line 156</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ContactDetails.php, line 166</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ContactDetails.php, line 306</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesAdminEditForm.php, line 29</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesAdminEditForm.php, line 52</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesAdminEditForm.php, line 71</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesAdminEditForm.php, line 84</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesAdminEditForm.php, line 97</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesAdminEditForm.php, line 285</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesAdminEditForm.php, line 299</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesAdminEditForm.php, line 312</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesAdminEditForm.php, line 325</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesAdminEditForm.php, line 371</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesAdminEditForm.php, line 389</li>
+              <li>modules/custom/r_textbook_companion/src/ProposalApprovalForm.php, line 18</li>
+              <li>modules/custom/r_textbook_companion/src/ProposalApprovalForm.php, line 149</li>
+              <li>modules/custom/r_textbook_companion/src/ProposalApprovalForm.php, line 229</li>
+              <li>modules/custom/r_textbook_companion/src/PaperSubmissionForm.php, line 21</li>
+              <li>modules/custom/r_textbook_companion/src/ChequeContctForm.php, line 18</li>
+              <li>modules/custom/r_textbook_companion/src/ChequeContctForm.php, line 54</li>
+              <li>modules/custom/r_textbook_companion/src/ChequeContctForm.php, line 99</li>
+              <li>modules/custom/r_textbook_companion/src/ChequeContctForm.php, line 146</li>
+              <li>modules/custom/r_textbook_companion/src/ChequeContctForm.php, line 160</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ProposalApprovalForm.php, line 28</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ProposalApprovalForm.php, line 159</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ProposalApprovalForm.php, line 239</li>
+              <li>modules/custom/r_textbook_companion/src/ProposalStatusForm.php, line 18</li>
+              <li>modules/custom/r_textbook_companion/src/ProposalStatusForm.php, line 142</li>
+              <li>modules/custom/r_textbook_companion/src/ProposalStatusForm.php, line 207</li>
+              <li>modules/custom/r_textbook_companion/src/ProposalStatusForm.php, line 279</li>
+              <li>modules/custom/r_textbook_companion/src/ProposalStatusForm.php, line 290</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 33</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 81</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 126</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 173</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 217</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 225</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 235</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 340</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 397</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 420</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 461</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 484</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 501</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 536</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 544</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 579</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 618</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 643</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 652</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 696</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 714</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 727</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 740</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 792</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 829</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 845</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 866</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 887</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 963</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 1001</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 1071</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 1135</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 1156</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 1163</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 1208</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 1214</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 1237</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 1253</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 1296</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 1313</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 1320</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 1328</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 1378</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 1391</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 1399</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 1409</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 1458</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 1473</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 1480</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 1501</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 1552</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 1570</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 1584</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 1608</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 1675</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 1689</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 1700</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 1764</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 1840</li>
+              <li>modules/custom/r_textbook_companion/src/CodableExamplesApprovalForm.php, line 17</li>
+              <li>modules/custom/r_textbook_companion/src/CodableExamplesApprovalForm.php, line 26</li>
+              <li>modules/custom/r_textbook_companion/src/CodableExamplesApprovalForm.php, line 46</li>
+              <li>modules/custom/r_textbook_companion/src/CodableExamplesApprovalForm.php, line 93</li>
+              <li>modules/custom/r_textbook_companion/src/CodableExamplesApprovalForm.php, line 98</li>
+            </ul>
+                  <aside>Flagged by _function_call:db_select</aside>    </details>
+    <details class="error">
+      <summary><code>db_update()</code> has been removed.</summary>
+
+      
+            <h5>Documentation</h5>
+      <ul>
+                <li><a target="_blank" href="https://www.drupal.org/node/2993033"><code>db_update()</code> is deprecated.</a></li>
+              </ul>
+      
+            <h5>Files Affected</h5>
+      <ul>
+              <li>modules/custom/r_textbook_companion/src/DefaultController.php, line 349</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesEditForm.php, line 380</li>
+              <li>modules/custom/r_textbook_companion/src/EditChapterTitleForm.php, line 193</li>
+              <li>modules/custom/r_textbook_companion/src/CodeApprovalForm.php, line 157</li>
+              <li>modules/custom/r_textbook_companion/src/Form/CodableExamplesApprovalForm.php, line 117</li>
+              <li>modules/custom/r_textbook_companion/src/Form/CodableExamplesApprovalForm.php, line 147</li>
+              <li>modules/custom/r_textbook_companion/src/ChequeStatusForm.php, line 500</li>
+              <li>modules/custom/r_textbook_companion/src/ChequeStatusForm.php, line 525</li>
+              <li>modules/custom/r_textbook_companion/src/ChequeStatusForm.php, line 545</li>
+              <li>modules/custom/r_textbook_companion/src/ChequeStatusForm.php, line 558</li>
+              <li>modules/custom/r_textbook_companion/src/UploadExamplesAdminEditForm.php, line 343</li>
+              <li>modules/custom/r_textbook_companion/src/ProposalEditForm.php, line 475</li>
+              <li>modules/custom/r_textbook_companion/src/ProposalEditForm.php, line 507</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ProposalEditForm.php, line 485</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ProposalEditForm.php, line 517</li>
+              <li>modules/custom/r_textbook_companion/src/Form/PaperSubmissionForm.php, line 95</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 253</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 262</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 311</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 519</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 567</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 674</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BulkApprovalForm.php, line 728</li>
+              <li>modules/custom/r_textbook_companion/src/Form/CodeApprovalForm.php, line 167</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesEditForm.php, line 390</li>
+              <li>modules/custom/r_textbook_companion/src/ContactDetails.php, line 317</li>
+              <li>modules/custom/r_textbook_companion/src/BookNotesForm.php, line 109</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 243</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 252</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 301</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 509</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 557</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 664</li>
+              <li>modules/custom/r_textbook_companion/src/BulkApprovalForm.php, line 718</li>
+              <li>modules/custom/r_textbook_companion/src/Form/EditChapterTitleForm.php, line 203</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ProposalStatusForm.php, line 306</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ProposalStatusForm.php, line 342</li>
+              <li>modules/custom/r_textbook_companion/src/Form/BookNotesForm.php, line 119</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ChequeStatusForm.php, line 510</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ChequeStatusForm.php, line 535</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ChequeStatusForm.php, line 555</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ChequeStatusForm.php, line 568</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ContactDetails.php, line 327</li>
+              <li>modules/custom/r_textbook_companion/src/Form/UploadExamplesAdminEditForm.php, line 353</li>
+              <li>modules/custom/r_textbook_companion/src/ProposalApprovalForm.php, line 252</li>
+              <li>modules/custom/r_textbook_companion/src/ProposalApprovalForm.php, line 263</li>
+              <li>modules/custom/r_textbook_companion/src/ProposalApprovalForm.php, line 294</li>
+              <li>modules/custom/r_textbook_companion/src/ProposalApprovalForm.php, line 303</li>
+              <li>modules/custom/r_textbook_companion/src/PaperSubmissionForm.php, line 85</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ProposalApprovalForm.php, line 262</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ProposalApprovalForm.php, line 273</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ProposalApprovalForm.php, line 304</li>
+              <li>modules/custom/r_textbook_companion/src/Form/ProposalApprovalForm.php, line 313</li>
+              <li>modules/custom/r_textbook_companion/src/ProposalStatusForm.php, line 296</li>
+              <li>modules/custom/r_textbook_companion/src/ProposalStatusForm.php, line 332</li>
+              <li>modules/custom/r_textbook_companion/src/Controller/DefaultController.php, line 355</li>
+              <li>modules/custom/r_textbook_companion/src/CodableExamplesApprovalForm.php, line 107</li>
+              <li>modules/custom/r_textbook_companion/src/CodableExamplesApprovalForm.php, line 137</li>
+            </ul>
+                  <aside>Flagged by _function_call:db_update</aside>    </details>
+    <details class="error">
+      <summary><code>hook_menu()</code> has been removed from Drupal 8.</summary>
+
+      
+            <h5>Documentation</h5>
+      <ul>
+                <li><a target="_blank" href="https://www.drupal.org/node/1800686">All functionality of <code>hook_menu()</code> replaced</a></li>
+                <li><a target="_blank" href="https://www.drupal.org/node/2177901">Dynamic routes are now defined in <code>MODULE.routing.yml</code></a></li>
+                <li><a target="_blank" href="https://www.drupal.org/node/2119699">Page callbacks have been converted to controller classes</a></li>
+                <li><a target="_blank" href="https://www.drupal.org/node/2089605">Route naming convention</a></li>
+                <li><a target="_blank" href="https://www.drupal.org/node/2165243">Contextual links are now plugins defined in <code>MODULE.links.contextual.yml</code></a></li>
+                <li><a target="_blank" href="https://www.drupal.org/node/2007444">Local actions are now plugins defined in <code>MODULE.links.action.yml</code></a></li>
+                <li><a target="_blank" href="https://www.drupal.org/node/2044515">Local tasks and now plugins defined in <code>MODULE.links.task.yml</code></a></li>
+                <li><a target="_blank" href="https://www.drupal.org/node/2228089">Menu links are now defined in <code>MODULE.links.menu.yml</code></a></li>
+              </ul>
+      
+            <h5>Files Affected</h5>
+      <ul>
+              <li>modules/custom/r_textbook_companion/textbook_companion.module, line 5</li>
+            </ul>
+                  <aside>Flagged by _flag_hook:menu</aside>    </details>
+    <details class="warning">
+      <summary>Many common functions, shared variables, and constants have been renamed.</summary>
+
+      
+            <h5>Documentation</h5>
+      <ul>
+                <li><a target="_blank" href="https://www.drupal.org/node/2324935">The global theme variables have been replaced by an ActiveTheme object</a></li>
+              </ul>
+      
+                      </details>
+
+    </details>
+    </body>
+</html>

@@ -1,0 +1,773 @@
+<?php
+
+/**
+ * Implements a helper function to capitalize words, handling delimiters.
+ */
+use Drupal\user\Entity\User;
+use Drupal\Core\Database\Database;
+use Drupal\Core\Mail\MailManagerInterface;
+use Drupal\Core\StringTranslation\StringTranslationTrait;
+use Drupal\Core\Link;
+use Drupal\Core\Url;
+
+
+function case_study_mail($key, &$message, $params) {
+
+  $language = \Drupal::currentUser()->getPreferredLangcode();
+  $language = $params['language'] ?? $language;
+  $message['langcode'] = $language;
+
+  switch ($key) {
+
+case 'case_study_proposal_received':
+
+  $proposal_id = $params['case_study_proposal_received']['proposal_id'];
+
+  $proposal_data = \Drupal::database()
+    ->select('case_study_proposal', 'csp')
+    ->fields('csp')
+    ->condition('id', $proposal_id)
+    ->range(0, 1)
+    ->execute()
+    ->fetchObject();
+
+  if (!$proposal_data) {
+    return;
+  }
+
+  $user_data = \Drupal\user\Entity\User::load($params['case_study_proposal_received']['user_id']);
+
+  $site_name = \Drupal::config('system.site')->get('name');
+
+  $message['headers'] = $params['case_study_proposal_received']['headers'];
+  $message['headers']['Content-Type'] = 'text/html; charset=UTF-8';
+
+  $message['subject'] = t(
+    '[@site] [Case Study Project] Your Case Study Project proposal has been received',
+    ['@site' => $site_name]
+  );
+
+$message['body'][] = t(
+'Dear @name,<br><br>
+
+We have received your Case Study Project proposal with the following details:
+
+
+  <b>Full Name:</b> @full_name<br>
+  <b>Email:</b> @email<br>
+  <b>University/Institute:</b> @university<br>
+  <b>Department:</b> @department<br>
+  <b>City:</b> @city<br>
+  <b>State:</b> @state<br>
+  <b>Country:</b> @country<br>
+  <b>Project Title:</b> @project_title<br>
+  <b>Description:</b> @description<br>
+  <b>Date of Proposal:</b> @proposal_date<br>
+  <b>Expected Date of Completion:</b> @completion_date
+
+
+Your proposal is under review. You will soon receive an email when it is approved/disapproved.
+
+
+Best Wishes,<br>
+@site Team<br>
+FOSSEE, IIT Bombay',
+[
+  '@name' => $proposal_data->contributor_name,
+  '@full_name' => $proposal_data->name_title . ' ' . $proposal_data->contributor_name,
+  '@email' => $user_data->getEmail(),
+  '@university' => $proposal_data->university,
+  '@department' => $proposal_data->department,
+  '@city' => $proposal_data->city,
+  '@state' => $proposal_data->state,
+  '@country' => $proposal_data->country,
+  '@project_title' => $proposal_data->project_title,
+  '@description' => $proposal_data->description,
+  '@proposal_date' => date('d/m/Y', $proposal_data->creation_date),
+  '@completion_date' => date('d/m/Y', $proposal_data->expected_date_of_completion),
+  '@site' => $site_name,
+]);
+break;
+
+case 'case_study_proposal_approved':
+  /* initializing data */
+  $url = 'https://r.fossee.in/case-study-project/abstract-code';
+
+  $query = \Drupal::database()->select('case_study_proposal', 'csp');
+  $query->fields('csp');
+  $query->condition('id', $params['case_study_proposal_approved']['proposal_id']);
+  $query->range(0, 1);
+  $proposal_data = $query->execute()->fetchObject();
+
+  $user_data = User::load($params['case_study_proposal_approved']['user_id']);
+
+  $message['headers'] = $params['case_study_proposal_approved']['headers'];
+
+  $site_name = \Drupal::config('system.site')->get('name');
+  $langcode = \Drupal::languageManager()->getCurrentLanguage()->getId();
+
+  $message['subject'] = t('[@site][Case Study Project] Your Case Study Project proposal has been approved', [
+    '@site' => $site_name,
+  ], [
+    'langcode' => $langcode,
+  ]);
+
+  $message['body'] = [
+    'body' => t('
+Dear ' . $proposal_data->contributor_name . ',
+
+Your Case Study Project proposal with the following details has been approved:
+
+Full Name: ' . $proposal_data->name_title . ' ' . $proposal_data->contributor_name . '
+Email: ' . $user_data->getEmail() . '
+University/Institute: ' . $proposal_data->university . '
+Department: ' . $proposal_data->department . '
+City: ' . $proposal_data->city . '
+State: ' . $proposal_data->state . '
+Country: ' . $proposal_data->country . '
+Project Title: ' . $proposal_data->project_title . '
+Description: ' . $proposal_data->description . '
+Date of Proposal: ' . date('d/m/Y', $proposal_data->creation_date) . '
+Expected Date of Completion: ' . date('d/m/Y', $proposal_data->expected_date_of_completion) . '
+
+
+You can upload your project files at: ' . $url . '
+
+Best Wishes,
+
+@site Team,
+FOSSEE, IIT Bombay', [
+      '@site' => $site_name,
+      '@user_name' => $user_data->getDisplayName(),
+    ], [
+      'langcode' => $langcode,
+    ]),
+  ];
+  break;
+
+
+case 'case_study_proposal_disapproved':
+  /* initializing data */
+  $query = \Drupal::database()->select('case_study_proposal', 'csp');
+  $query->fields('csp');
+  $query->condition('id', $params['case_study_proposal_disapproved']['proposal_id']);
+  $query->range(0, 1);
+  $proposal_data = $query->execute()->fetchObject();
+
+  $user_data = User::load($params['case_study_proposal_disapproved']['user_id']);
+  //$user = user_load($params['case_study_proposal']['name']);
+
+  $message['headers'] = $params['case_study_proposal_disapproved']['headers'];
+
+  $site_name = \Drupal::config('system.site')->get('name');
+  $langcode = \Drupal::languageManager()->getCurrentLanguage()->getId();
+
+  $message['subject'] = t('[@site][Case Study Project] Your Case Study Project proposal has been disapproved', [
+    '@site' => $site_name,
+  ], [
+    'langcode' => $langcode,
+  ]);
+
+  $message['body'] = [
+    'body' => t('
+Dear ' . $proposal_data->contributor_name . ',
+
+We regret to inform you that your Case Study proposal with following details have been disapproved:
+
+Full Name: ' . $proposal_data->name_title . ' ' . $proposal_data->contributor_name . '
+Email: ' . $user_data->getEmail() . '
+University/Institute: ' . $proposal_data->university . '
+Department: ' . $proposal_data->department . '
+City: ' . $proposal_data->city . '
+State: ' . $proposal_data->state . '
+Country: ' . $proposal_data->country . '
+Project Title: ' . $proposal_data->project_title . '
+Description: ' . $proposal_data->description . '
+Date of Proposal: ' . date('d/m/Y', $proposal_data->creation_date) . '
+Expected Date of Completion: ' . date('d/m/Y', $proposal_data->expected_date_of_completion) . '
+
+Reason for rejection: ' . $proposal_data->dissapproval_reason . '
+
+You are welcome to submit a new proposal.
+
+Best Wishes,
+
+@site Team,
+FOSSEE, IIT Bombay', [
+      '@site' => $site_name,
+      '@user_name' => $user_data->getDisplayName(),
+    ], [
+      'langcode' => $langcode,
+    ]),
+  ];
+  break;
+
+
+case 'abstract_approval':
+
+  $data = $params['abstract_approval'] ?? [];
+
+  $proposal_id = $data['proposal_id'] ?? 0;
+
+  $proposal = \Drupal::database()->select('case_study_proposal', 'csp')
+    ->fields('csp')
+    ->condition('id', $proposal_id)
+    ->execute()
+    ->fetchObject();
+
+  if (!$proposal) {
+    \Drupal::logger('mail_debug')->error('Proposal not found. ID: @id', [
+      '@id' => $proposal_id,
+    ]);
+    return;
+  }
+
+  $user_data = \Drupal\user\Entity\User::load($proposal->uid);
+
+  if (!$user_data) {
+    \Drupal::logger('mail_debug')->error('User not found for proposal ID: @id', [
+      '@id' => $proposal_id,
+    ]);
+    return;
+  }
+
+  $site = \Drupal::config('system.site')->get('name');
+
+  $message['headers'] = $data['headers'] ?? [];
+
+  $message['subject'] = t(
+    '[@site][Case Study] Your uploaded Case Study has been approved',
+    [
+      '@site' => $site,
+    ]
+  );
+
+  $message['body'][] = t(
+    "Dear @name,\n\n" .
+
+    "Congratulations!\n" .
+    "Your report and code files for Case Study Project at FOSSEE have been approved.\n\n" .
+
+    "Full Name: @fullname\n" .
+    "Email: @email\n" .
+    "University/Institute: @university\n" .
+    "City: @city\n\n" .
+
+    "Project Title: @title\n" .
+    "Description of the Case Study: @description\n\n" .
+
+    "Kindly send us the internship forms as early as possible for processing your honorarium on time. " .
+    "In case you have already sent these forms, please share the consignment number or tracking ID with us.\n\n" .
+
+    "Note: It will take upto 30 days from the time we receive your forms, to process your honorarium.\n\n" .
+
+    "Best Wishes,\n\n" .
+    "@site Team,\n" .
+    "FOSSEE, IIT Bombay",
+
+    [
+      '@name' => $proposal->contributor_name ?? 'User',
+      '@fullname' => ($proposal->name_title ?? '') . ' ' . ($proposal->contributor_name ?? ''),
+      '@email' => $user_data->getEmail(),
+      '@university' => $proposal->university ?? 'N/A',
+      '@city' => $proposal->city ?? 'N/A',
+      '@title' => $proposal->project_title ?? 'N/A',
+      '@description' => $proposal->description ?? 'N/A',
+      '@site' => $site,
+    ]
+  );
+
+break;
+
+
+// case 'solution_resubmission': 
+//   $query = Database::getConnection()->select('case_study_proposal', 'csp');
+// $query->fields('csp');
+// $query->condition('id', $params['solution_resubmission']['proposal_id']);
+// $query->range(0, 1);
+// $proposal_data = $query->execute()->fetchObject();
+
+// // Load user data
+// //$user = User::load($params['solution_approved']['user_id']);
+
+// // Prepare message headers
+// $message['headers'] = $params['solution_resubmission']['headers'];
+//            // Load site name from configuration
+// $site_name = \Drupal::config('system.site')->get('name') ?? '';
+
+// // Email subject with translation
+// $message['subject'] = t(
+//   '[@site_name][Case Study] Your uploaded Case Study Project have been marked as pending',
+//   ['@site_name' => $site_name]
+// );
+
+// // Email body with translation and placeholders
+// $message['body'] = [
+//   'body' => t(
+// 'Dear @contributor_name,
+
+// Kindly resubmit the project files for the project : @project_title
+// Reason for resubmission: @disapproval_message
+
+// Best Wishes,
+// @site_name Team,
+// FOSSEE, IIT Bombay',
+//     [
+//       '@contributor_name' => $proposal_data->contributor_name ?? '',
+//       '@project_title' => $proposal_data->project_title ?? '',
+//       '@disapproval_message' => $params['solution_resubmission']['disapproval_message'],
+//       '@site_name' => $site_name,
+//     ]
+//   )
+// ];
+
+              // break;
+
+              case 'solution_resubmission':
+
+  $query = Database::getConnection()->select('case_study_proposal', 'csp');
+  $query->fields('csp');
+  $query->condition('id', $params['solution_resubmission']['proposal_id']);
+  $query->range(0, 1);
+
+  $proposal_data = $query->execute()->fetchObject();
+
+  if (!$proposal_data) {
+    \Drupal::logger('mail_debug')->error('Proposal data not found.');
+    return;
+  }
+
+  $message['headers'] = $params['solution_resubmission']['headers'];
+
+  $site_name = \Drupal::config('system.site')->get('name') ?? '';
+
+  $message['subject'] = t(
+    '[@site_name][Case Study] Your uploaded Case Study Project have been marked as pending',
+    ['@site_name' => $site_name]
+  );
+
+  $message['body'][] = t(
+    'Dear @contributor_name,
+
+Kindly resubmit the project files for the project : @project_title
+Reason for resubmission: @disapproval_message
+
+Best Wishes,
+@site_name Team,
+FOSSEE, IIT Bombay',
+    [
+      '@contributor_name' => $proposal_data->contributor_name ?? '',
+      '@project_title' => $proposal_data->project_title ?? '',
+      '@disapproval_message' => $params['solution_resubmission']['disapproval_message'] ?? '',
+      '@site_name' => $site_name,
+    ]
+  );
+
+break;
+case 'solution_disapproved': 
+  //var_dump($params['solution_disapproved']['proposal_id']);die;
+ $query = Database::getConnection()->select('case_study_proposal', 'csp');
+$query->fields('csp');
+$query->condition('id', $params['solution_disapproved']['proposal_id']);
+$query->range(0, 1);
+$proposal_data = $query->execute()->fetchObject();
+//var_dump($proposal_data->contributor_name);die;
+// Load user data
+//$user = User::load($params['solution_approved']['user_id']);
+
+// Prepare message headers
+$message['headers'] = $params['solution_disapproved']['headers'];
+           // Load site name from configuration
+$site_name = \Drupal::config('system.site')->get('name') ?? '';
+
+// Email subject with translation
+$message['subject'] = t(
+  '[@site_name][Case Study ] Your uploaded Case Study Project have been marked as disapproved',
+  ['@site_name' => $site_name]
+);
+
+// Email body with translation and placeholders
+$message['body'] = [
+  'body' => t(
+'Dear @contributor_name,
+
+Your uploaded Case Study Project files for the Case Study Project Title : @project_title have been marked disapproved and deleted. 
+Reason for disapproval: @disapproval_message
+
+Best Wishes,
+@site_name Team,
+FOSSEE, IIT Bombay',
+    [
+      '@contributor_name' => $proposal_data->contributor_name,
+      '@project_title' => $proposal_data->project_title,
+      '@disapproval_message' => $params['solution_disapproved']['disapproval_message'],
+      '@site_name' => $site_name,
+    ]
+  )
+];
+
+              break;
+
+
+case 'bulk_project_disapproved':
+
+  $data = $params['bulk_project_disapproved'] ?? [];
+
+  $proposal_id = $data['proposal_id'] ?? 0;
+
+  $proposal = \Drupal::database()->select('case_study_proposal', 'csp')
+    ->fields('csp')
+    ->condition('id', $proposal_id)
+    ->execute()
+    ->fetchObject();
+
+  if (!$proposal) {
+    \Drupal::logger('mail_debug')->error('Proposal not found for disapproval. ID: @id', [
+      '@id' => $proposal_id,
+    ]);
+    return;
+  }
+
+  $site = \Drupal::config('system.site')->get('name');
+
+  $message['headers'] = $data['headers'] ?? [];
+
+  $message['subject'] = t('[@site][Case Study] Your Case Study has been disapproved', [
+    '@site' => $site,
+  ]);
+
+  $message['body'][] = t(
+    "Dear @name,\n\n" .
+    "Your Case Study has been disapproved.\n\n" .
+    "Project Title: @title\n" .
+    "Reason: @reason\n\n" .
+    "Best Wishes,\n" .
+    "@site Team",
+    [
+      '@name' => $proposal->contributor_name ?? 'User',
+      '@title' => $proposal->project_title ?? 'N/A',
+      '@reason' => $data['message'] ?? 'N/A',
+      '@site' => $site,
+    ]
+  );
+
+break;
+
+case 'case_study_proposal_completed':
+  /* initializing data */
+  $query = \Drupal::database()->select('case_study_proposal', 'csp');
+  $query->fields('csp');
+  $query->condition('id', $params['case_study_proposal_completed']['proposal_id']);
+  $query->range(0, 1);
+  $proposal_data = $query->execute()->fetchObject();
+
+  $user_data = User::load($params['case_study_proposal_completed']['user_id']);
+
+  $message['headers'] = $params['case_study_proposal_completed']['headers'];
+
+  $site_name = \Drupal::config('system.site')->get('name');
+  $langcode = \Drupal::languageManager()->getCurrentLanguage()->getId();
+
+  $message['subject'] = t('[@site_name][Case Study Project] Your Case Study Project proposal has been completed', [
+    '@site_name' => $site_name,
+  ], [
+    'langcode' => $langcode,
+  ]);
+
+$message['body'][] = t('
+Dear @name,
+
+Your Case Study and abstract on the following process have been completed successfully.
+
+Full Name: @full_name
+Email: @email
+University/Institute: @university
+City: @city
+State: @state
+Country: @country
+Project Title: @project_title
+
+Best Wishes,
+
+@site_name Team,
+FOSSEE, IIT Bombay', [
+  '@name' => $proposal_data->contributor_name,
+  '@full_name' => $proposal_data->name_title . ' ' . $proposal_data->contributor_name,
+  '@email' => $user_data->getEmail(),
+  '@university' => $proposal_data->university,
+  '@city' => $proposal_data->city,
+  '@state' => $proposal_data->state,
+  '@country' => $proposal_data->country,
+  '@project_title' => $proposal_data->project_title,
+  '@site_name' => $site_name,
+], [
+  'langcode' => $langcode,
+]);
+break;
+
+        case 'abstract_edit_file_uploaded':
+            // $solution_q = db_query("SELECT * FROM {case_study_solution} WHERE id = %d LIMIT 1", $params['abstract_uploaded']['solution_id']);
+            $site_name = \Drupal::config('system.site')->get('name') ?? '';
+
+// Database query to fetch proposal data
+$query = Database::getConnection()->select('case_study_proposal', 'csp');
+$query->fields('csp');
+$query->condition('id', $params['abstract_edit_file_uploaded']['proposal_id']);
+$query->range(0, 1);
+$proposal_data = $query->execute()->fetchObject();
+
+// Load user data
+//$user = User::load($params['abstract_edit_file_uploaded']['user_id']);
+
+// Get file names from parameters
+$abs_file_name = $params['abstract_edit_file_uploaded']['abs_file'] ?? '';
+$proj_file_name = $params['abstract_edit_file_uploaded']['proj_file'] ?? '';
+
+// Prepare message headers
+$message['headers'] = $params['abstract_edit_file_uploaded']['headers'];
+
+// Set message subject with translation
+$message['subject'] = t(
+  '[@site_name][Case Study Project] Project files/abstract of a case study updated by R Team',
+  ['@site_name' => $site_name]
+);
+
+// Set message body with translation and placeholders
+$message['body'] = [
+  'body' => t(
+'Dear @contributor_name,
+
+Our team has updated the abstract/project files for the following case study:
+
+Project Title: @project_title
+@abs_file
+@proj_file
+
+Best Wishes,
+@site_name Team,
+FOSSEE, IIT Bombay',
+    [
+      '@contributor_name' => $proposal_data->contributor_name ?? '',
+      '@project_title' => $proposal_data->project_title ?? '',
+      '@abs_file' => !empty($abs_file_name) ? t('Updated Abstract File: @file', ['@file' => $abs_file_name]) : '',
+      '@proj_file' => !empty($proj_file_name) ? t('Updated Project File: @file', ['@file' => $proj_file_name]) : '',
+      '@site_name' => $site_name,
+    ]
+  ),
+];
+
+break;
+case 'case_study_proposal_deleted':
+  /* initializing data */
+  $query = \Drupal::database()->select('case_study_proposal', 'csp');
+  $query->fields('csp');
+  $query->condition('id', $params['case_study_proposal_deleted']['proposal_id']);
+  $query->range(0, 1);
+  $proposal_data = $query->execute()->fetchObject();
+
+  $user_data = User::load($params['case_study_proposal_deleted']['user_id']);
+
+  $message['headers'] = $params['case_study_proposal_deleted']['headers'];
+
+  $site_name = \Drupal::config('system.site')->get('name');
+  $langcode = \Drupal::languageManager()->getCurrentLanguage()->getId();
+
+  $message['subject'] = t('[@site][Case Study Project] Your Case Study Project proposal has been deleted', [
+    '@site' => $site_name,
+  ], [
+    'langcode' => $langcode,
+  ]);
+
+  $message['body'] = [
+    'body' => t('
+Dear ' . $proposal_data->contributor_name . ',
+
+Your Case Study Project proposal with the following details has been deleted :
+
+Full Name: ' . $proposal_data->name_title . ' ' . $proposal_data->contributor_name . '
+Email: ' . $user_data->getEmail() . '
+University/Institute: ' . $proposal_data->university . '
+City: ' . $proposal_data->city . '
+State: ' . $proposal_data->state . '
+Country: ' . $proposal_data->country . '
+Project Title: ' . $proposal_data->project_title . '
+
+You can propose a new Case Study project.
+
+Best Wishes,
+
+@site Team,
+FOSSEE, IIT Bombay', [
+      '@site' => $site_name,
+      '@user_name' => $user_data->getDisplayName(),
+    ], [
+      'langcode' => $langcode,
+    ]),
+  ];
+  break;
+
+
+
+
+case 'abstract_uploaded':
+
+  // Fetch proposal
+  $proposal_data = \Drupal::database()->select('case_study_proposal', 'csp')
+    ->fields('csp')
+    ->condition('id', $params['abstract_uploaded']['proposal_id'])
+    ->range(0, 1)
+    ->execute()
+    ->fetchObject();
+
+  // Load user
+  $user = \Drupal\user\Entity\User::load($params['abstract_uploaded']['user_id']);
+
+  // Language
+  $langcode = $message['langcode'] ?? \Drupal::languageManager()->getDefaultLanguage()->getId();
+
+  // Subject
+  $message['subject'] = t('[@site_name][Case Study Project] You have uploaded Case Study project files', [
+    '@site_name' => \Drupal::config('system.site')->get('name'),
+  ], [
+    'langcode' => $langcode,
+  ]);
+
+  // Headers
+  $message['headers'] = $params['abstract_uploaded']['headers'];
+
+  // Body
+  $message['body'][] = t(
+    'Dear @name,
+
+You have uploaded the Report and Code files for the following project:
+
+Project Title: @title
+
+
+The report and code files are under review. You will be notified when it has been approved.
+
+Best Wishes,
+
+@site_name Team,
+FOSSEE, IIT Bombay',
+    [
+      '@name' => $proposal_data->contributor_name,
+      '@title' => $proposal_data->project_title,
+      '@site_name' => \Drupal::config('system.site')->get('name'),
+    ],
+    [
+      'langcode' => $langcode,
+    ]
+  );
+
+  break;
+
+      // case 'abstract_edit_file_uploaded':
+
+      // // Load proposal data.
+      // $proposal_data = \Drupal::database()
+      //   ->select('case_study_proposal', 'csp')
+      //   ->fields('csp')
+      //   ->condition('id', $params['abstract_edit_file_uploaded']['proposal_id'])
+      //   ->range(0, 1)
+      //   ->execute()
+      //   ->fetchObject();
+
+      // // Load user.
+      // $user = User::load($params['abstract_edit_file_uploaded']['user_id']);
+
+      // $abs_file_name = $params['abstract_edit_file_uploaded']['abs_file'];
+      // $proj_file_name = $params['abstract_edit_file_uploaded']['proj_file'];
+
+      // // Site name.
+      // $site_name = \Drupal::config('system.site')->get('name');
+
+      // // Subject.
+      // $message['subject'] = t(
+      //   '[!site_name][Case Study Project] You have updated code files/report of a case study',
+      //   [
+      //     '!site_name' => $site_name,
+      //   ]
+      // );
+
+      // // Headers.
+      // if (!empty($params['abstract_edit_file_uploaded']['headers'])) {
+      //   $message['headers'] = $params['abstract_edit_file_uploaded']['headers'];
+      // }
+
+      // // Mail body.
+      // $body = [];
+
+      // $body[] = t(
+      //   "Dear @name,\n",
+      //   [
+      //     '@name' => $proposal_data->contributor_name,
+      //   ]
+      // );
+
+      // $body[] = t(
+      //   "You have updated the report/code files for the following case study.\n"
+      // );
+
+      // $body[] = t(
+      //   "Project Title: @title\n",
+      //   [
+      //     '@title' => $proposal_data->project_title,
+      //   ]
+      // );
+
+      // if (!empty($abs_file_name)) {
+      //   $body[] = t(
+      //     "Abstract File: @file\n",
+      //     [
+      //       '@file' => $abs_file_name,
+      //     ]
+      //   );
+      // }
+
+      // if (!empty($proj_file_name)) {
+      //   $body[] = t(
+      //     "Project File: @file\n",
+      //     [
+      //       '@file' => $proj_file_name,
+      //     ]
+      //   );
+      // }
+
+      // $body[] = t(
+      //   "\nBest Wishes,\n@site_name Team,\nFOSSEE, IIT Bombay",
+      //   [
+      //     '@site_name' => $site_name,
+      //   ]
+      // );
+
+      // $message['body'] = $body;
+
+      // break;
+
+    case 'standard':
+
+      $message['subject'] = $params['standard']['subject'];
+      $message['body'] = $params['standard']['body'];
+
+      if (!empty($params['standard']['headers'])) {
+        $message['headers'] = $params['standard']['headers'];
+      }
+
+      break;
+  }
+}
+
+
+//   case 'standard':
+//   $message['subject'] = $params['standard']['subject'];
+//   $message['body'] = $params['standard']['body'];
+
+//   // Merge headers instead of replacing (important)
+//   if (!empty($params['standard']['headers'])) {
+//     $message['headers'] += $params['standard']['headers'];
+//   }
+
+//   break;
+//   }
+// }
