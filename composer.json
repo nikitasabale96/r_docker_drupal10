@@ -39,7 +39,6 @@
         "drupal/masquerade": "^2.0",
         "drupal/matomo": "^1.25",
         "drupal/minifier_html": "^11.0",
-        "drupal/nava": "^1.0",
         "drupal/paragraphs": "^1.19",
         "drupal/pathauto": "^1.15",
         "drupal/printfriendly": "^3.6",
