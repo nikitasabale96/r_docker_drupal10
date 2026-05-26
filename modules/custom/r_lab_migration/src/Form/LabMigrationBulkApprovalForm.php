@@ -894,26 +894,35 @@ FOSSEE, IIT Bombay', [
 ];
 }
           elseif (($form_state->getValue(['lab_actions']) == 0) && ($form_state->getValue(['lab_experiment_actions']) == 0) && ($form_state->getValue(['lab_experiment_solution_actions']) == 1)) {
-            $query = \Drupal::database()->select('lab_migration_solution');
-            $query->fields('lab_migration_solution');
-            $query->condition('id', $form_state->getValue(['solution_list']));
-            $query->orderBy('code_number', 'ASC');
-            $solution_q = $query->execute();
-            $solution_value = $solution_q->fetchObject();
-            $query = \Drupal::database()->select('lab_migration_experiment');
-            $query->fields('lab_migration_experiment');
-            $query->condition('id', $solution_value->experiment_id);
-            $query->orderBy('number', 'ASC');
-            $experiment_q = $query->execute();
-            $experiment_value = $experiment_q->fetchObject();
-            \Drupal::database()->query("UPDATE {lab_migration_solution} SET approval_status = 1, approver_uid = :approver_uid WHERE id = :id", [
-              ":approver_uid" => $user->uid,
-              ":id" => $form_state->getValue(['solution_list']),
-            ]);
-            \Drupal::messenger()->addmessage(t('Solution approved.'), 'status');
-            $config = \Drupal::config('system.site');
+$user = \Drupal::currentUser();
 
-$email_subject = t('[@site_name] Your uploaded Lab Migration solution has been approved', [
+$query = \Drupal::database()->select('lab_migration_solution');
+$query->fields('lab_migration_solution');
+$query->condition('id', $form_state->getValue(['solution_list']));
+$query->orderBy('code_number', 'ASC');
+$solution_q = $query->execute();
+$solution_value = $solution_q->fetchObject();
+
+$query = \Drupal::database()->select('lab_migration_experiment');
+$query->fields('lab_migration_experiment');
+$query->condition('id', $solution_value->experiment_id);
+$query->orderBy('number', 'ASC');
+$experiment_q = $query->execute();
+$experiment_value = $experiment_q->fetchObject();
+
+\Drupal::database()->query(
+  "UPDATE {lab_migration_solution} 
+   SET approval_status = 1, approver_uid = :approver_uid 
+   WHERE id = :id",
+  [
+    ':approver_uid' => $user->id(),
+    ':id' => $form_state->getValue(['solution_list']),
+  ]
+);
+
+\Drupal::messenger()->addMessage(t('Solution approved.'), 'status');
+
+$config = \Drupal::config('system.site');$email_subject = t('[@site_name] Your uploaded Lab Migration solution has been approved', [
   '@site_name' => $config->get('name'),
 ]);
 
