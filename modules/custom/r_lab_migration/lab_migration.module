@@ -544,12 +544,12 @@ case 'standard':
   $headers = $params['standard']['headers'] ?? [];
 
   /* Prevent str_getcsv() fatal error */
-  if (isset($headers['Cc']) && is_array($headers['Cc'])) {
-    $headers['Cc'] = implode(',', $headers['Cc']);
-  }
-  if (isset($headers['Bcc']) && is_array($headers['Bcc'])) {
-    $headers['Bcc'] = implode(',', $headers['Bcc']);
-  }
+  // if (isset($headers['Cc']) && is_array($headers['Cc'])) {
+  //   $headers['Cc'] = implode(',', $headers['Cc']);
+  // }
+  // if (isset($headers['Bcc']) && is_array($headers['Bcc'])) {
+  //   $headers['Bcc'] = implode(',', $headers['Bcc']);
+  // }
 
   $message['headers'] = $headers;
 
@@ -651,99 +651,6 @@ FOSSEE, IIT Bombay",
 break;
 
 
-// case 'solution_proposal_received':
-
-//   /* Load proposal */
-//   $proposal_data = \Drupal::database()
-//     ->select('lab_migration_proposal', 'p')
-//     ->fields('p')
-//     ->condition('id', $params['proposal_id'])
-//     ->range(0, 1)
-//     ->execute()
-//     ->fetchObject();
-
-//   if (!$proposal_data) {
-//     \Drupal::logger('lab_migration')->error('Proposal not found for ID: @id', [
-//       '@id' => $params['proposal_id'] ?? 'NULL',
-//     ]);
-//     return;
-//   }
-
-//   /* Load experiments */
-//   $experiment_q = \Drupal::database()
-//     ->select('lab_migration_experiment', 'e')
-//     ->fields('e')
-//     ->condition('proposal_id', $params['proposal_id'])
-//     ->orderBy('number', 'ASC')
-//     ->execute();
-
-//   $experiment_list = '';
-//   foreach ($experiment_q as $experiment_data) {
-//     $experiment_list .= $experiment_data->number . ') ' .
-//       $experiment_data->title . ' — ' .
-//       $experiment_data->description . "\n";
-//   }
-
-//   /* Load user */
-//   $user_data = User::load($params['user_id']);
-
-//   /* Site name */
-//   $site_name = \Drupal::config('system.site')->get('name');
-
-//   /* Headers */
-//   $headers = $params['headers'] ?? [];
-
-//   if (isset($headers['Cc']) && is_array($headers['Cc'])) {
-//     $headers['Cc'] = implode(',', $headers['Cc']);
-//   }
-//   if (isset($headers['Bcc']) && is_array($headers['Bcc'])) {
-//     $headers['Bcc'] = implode(',', $headers['Bcc']);
-//   }
-
-//   $message['headers'] = $headers;
-
-//   /* Subject */
-//   $message['subject'] = t(
-//     '[@site] Your Lab migration solution proposal has been received',
-//     ['@site' => $site_name]
-//   );
-
-//   /* Body */
-//   $message['body'][] = t(
-// "Dear @provider,
-
-// We have received your proposal for providing solution for lab migration with the following details:
-
-// List of experiments:
-// @experiments
-
-// Full Name: @fullname
-// Email: @email
-// Contact No.: @phone
-// Department/Branch: @department
-// University/Institute: @university
-
-// Your proposal is under review. You will soon receive an email when the same has been approved / disapproved.
-
-// Please ensure that ALL the codes follow guidelines at:
-// https://r.fossee.in/lab-migration/lab-migration-guidelines
-
-// Best Wishes,
-// @site_name Team
-// FOSSEE, IIT Bombay",
-//     [
-//       '@provider'   => $proposal_data->solution_provider_name,
-//       '@experiments'=> $experiment_list,
-//       '@fullname'   => $proposal_data->solution_provider_name_title . ' ' . $proposal_data->solution_provider_name,
-//       '@email'      => $user_data ? $user_data->getEmail() : '',
-//       '@phone'      => $proposal_data->solution_provider_contact_ph,
-//       '@department' => $proposal_data->department,
-//       '@university' => $proposal_data->solution_provider_university,
-//       '@site_name'  => $site_name,
-//     ]
-//   );
-
-//   break;
 case 'solution_proposal_received':
 
   $proposal_id = $params['proposal_id'] ?? 0;
