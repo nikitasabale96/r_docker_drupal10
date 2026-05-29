@@ -1678,19 +1678,30 @@ public function lab_migration_download_full_lab() {
   }
 
 
-  public function lab_migration_delete_lab_pdf() {
-    
-    $route_match = \Drupal::routeMatch();
 
-$lab_id = (int) $route_match->getParameter('lab_id');
-// \Drupal::service("lab_migration_global")->lab_migration_del_lab_pdf($lab_id);
-    \Drupal::messenger()->addMessage(t('Lab schedule for regeneration.'), 'status');
-    // RedirectResponse('lab_migration/code_approval/bulk');
-    $response = new RedirectResponse(Url::fromRoute('lab_migration.bulk_approval_form')->toString());
-$response->send();
-    return;
+public function lab_migration_delete_lab_pdf($lab_id = NULL) {
+
+  // If lab_id comes from route parameter.
+  if (!$lab_id) {
+    \Drupal::messenger()->addError(t('Invalid Lab ID.'));
+    return new RedirectResponse(
+      Url::fromUserInput('/lab_migration/code_approval/bulk')->toString()
+    );
   }
 
+  // Delete PDF.
+  lab_migration_del_lab_pdf($lab_id);
+
+  // Status message.
+  \Drupal::messenger()->addStatus(
+    t('Lab scheduled for regeneration.')
+  );
+
+  // Redirect.
+  return new RedirectResponse(
+    Url::fromUserInput('/lab_migration/code_approval/bulk')->toString()
+  );
+}
 //   function lab_migration_category_edit_form($form, $form_state)
 //   {
 //     /* get current proposal */
