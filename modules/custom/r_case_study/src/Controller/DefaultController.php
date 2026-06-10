@@ -502,7 +502,7 @@ $abstracts_query_process_filename = !empty($abstracts_query_process) && isset($a
         if ($abstracts_q->is_submitted == 0) {
             $url = Link::fromTextAndUrl(
                 'Edit',
-                Url::fromRoute('case-study-project.upload_abstract_code_form')
+                Url::fromRoute('r_case_study.upload_abstract_code_form')
             )->toString();
         } elseif ($abstracts_q->is_submitted == 1) {
             $url = ""; // No edit link if already submitted

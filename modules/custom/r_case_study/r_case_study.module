@@ -323,91 +323,68 @@ break;
 
               // break;
 
-              case 'solution_resubmission':
+case 'solution_resubmission':
+    $database = \Drupal::database();
 
-  $query = Database::getConnection()->select('case_study_proposal', 'csp');
-  $query->fields('csp');
-  $query->condition('id', $params['solution_resubmission']['proposal_id']);
-  $query->range(0, 1);
+    $proposal_data = $database->select('case_study_proposal', 'csp')
+      ->fields('csp')
+      ->condition('id', $params['solution_resubmission']['proposal_id'])
+      ->range(0, 1)
+      ->execute()
+      ->fetchObject();
 
-  $proposal_data = $query->execute()->fetchObject();
+    if (!$proposal_data) {
+      \Drupal::logger('r_case_study_mail')->error('Resubmission data missing for ID: @id', [
+        '@id' => $params['solution_resubmission']['proposal_id']
+      ]);
+      return;
+    }
 
-  if (!$proposal_data) {
-    \Drupal::logger('mail_debug')->error('Proposal data not found.');
-    return;
-  }
+    $message['headers'] = $params['solution_resubmission']['headers'] ?? [];
+    $site_name = \Drupal::config('system.site')->get('name') ?? 'FOSSEE';
 
-  $message['headers'] = $params['solution_resubmission']['headers'];
+    $message['subject'] = t('[@site_name][Case Study] Your uploaded Case Study Project has been marked as pending', [
+      '@site_name' => $site_name
+    ]);
 
-  $site_name = \Drupal::config('system.site')->get('name') ?? '';
+    $message['body'][] = t("Dear @contributor_name,\n\nKindly resubmit the project files for the project: @project_title\nReason for resubmission: @disapproval_message\n\nBest Wishes,\n@site_name Team,\nFOSSEE, IIT Bombay", [
+      '@contributor_name'    => $proposal_data->contributor_name ?? '',
+      '@project_title'       => $proposal_data->project_title ?? '',
+      '@disapproval_message' => $params['solution_resubmission']['disapproval_message'] ?? t('No reason specified.'),
+      '@site_name'           => $site_name,
+    ]);
+    break;
+  
+  case 'solution_disapproved': 
+    $database = \Drupal::database();
 
-  $message['subject'] = t(
-    '[@site_name][Case Study] Your uploaded Case Study Project have been marked as pending',
-    ['@site_name' => $site_name]
-  );
+    // FIX: Using standardized dynamic database connection objects
+    $proposal_data = $database->select('case_study_proposal', 'csp')
+      ->fields('csp')
+      ->condition('id', $params['solution_disapproved']['proposal_id'])
+      ->range(0, 1)
+      ->execute()
+      ->fetchObject();
 
-  $message['body'][] = t(
-    'Dear @contributor_name,
+    $message['headers'] = $params['solution_disapproved']['headers'] ?? [];
+    $site_name = \Drupal::config('system.site')->get('name') ?? 'FOSSEE';
 
-Kindly resubmit the project files for the project : @project_title
-Reason for resubmission: @disapproval_message
+    $message['subject'] = t('[@site_name][Case Study] Your uploaded Case Study Project has been marked as disapproved', [
+      '@site_name' => $site_name
+    ]);
 
-Best Wishes,
-@site_name Team,
-FOSSEE, IIT Bombay',
-    [
-      '@contributor_name' => $proposal_data->contributor_name ?? '',
-      '@project_title' => $proposal_data->project_title ?? '',
-      '@disapproval_message' => $params['solution_resubmission']['disapproval_message'] ?? '',
-      '@site_name' => $site_name,
-    ]
-  );
+    // FALLBACKS: If form context already dropped database records, fetch fallbacks explicitly passed down
+    $contributor = $proposal_data ? $proposal_data->contributor_name : ($params['solution_disapproved']['fallback_name'] ?? t('Contributor'));
+    $project_title = $proposal_data ? $proposal_data->project_title : ($params['solution_disapproved']['fallback_title'] ?? t('Submitted Project'));
 
-break;
-case 'solution_disapproved': 
-  //var_dump($params['solution_disapproved']['proposal_id']);die;
- $query = Database::getConnection()->select('case_study_proposal', 'csp');
-$query->fields('csp');
-$query->condition('id', $params['solution_disapproved']['proposal_id']);
-$query->range(0, 1);
-$proposal_data = $query->execute()->fetchObject();
-//var_dump($proposal_data->contributor_name);die;
-// Load user data
-//$user = User::load($params['solution_approved']['user_id']);
-
-// Prepare message headers
-$message['headers'] = $params['solution_disapproved']['headers'];
-           // Load site name from configuration
-$site_name = \Drupal::config('system.site')->get('name') ?? '';
-
-// Email subject with translation
-$message['subject'] = t(
-  '[@site_name][Case Study ] Your uploaded Case Study Project have been marked as disapproved',
-  ['@site_name' => $site_name]
-);
-
-// Email body with translation and placeholders
-$message['body'] = [
-  'body' => t(
-'Dear @contributor_name,
-
-Your uploaded Case Study Project files for the Case Study Project Title : @project_title have been marked disapproved and deleted. 
-Reason for disapproval: @disapproval_message
-
-Best Wishes,
-@site_name Team,
-FOSSEE, IIT Bombay',
-    [
-      '@contributor_name' => $proposal_data->contributor_name,
-      '@project_title' => $proposal_data->project_title,
-      '@disapproval_message' => $params['solution_disapproved']['disapproval_message'],
-      '@site_name' => $site_name,
-    ]
-  )
-];
-
-              break;
-
+    // FIX: Appending properly into an unkeyed string item stack element array ($message['body'][])
+    $message['body'][] = t("Dear @contributor_name,\n\nYour uploaded Case Study Project files for the Case Study Project Title: @project_title have been marked disapproved and deleted.\nReason for disapproval: @disapproval_message\n\nBest Wishes,\n@site_name Team,\nFOSSEE, IIT Bombay", [
+      '@contributor_name'    => $contributor,
+      '@project_title'       => $project_title,
+      '@disapproval_message' => $params['solution_disapproved']['disapproval_message'] ?? t('No reason specified.'),
+      '@site_name'           => $site_name,
+    ]);
+    break;
 
 case 'bulk_project_disapproved':
 
